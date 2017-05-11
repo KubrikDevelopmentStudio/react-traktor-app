@@ -10,7 +10,7 @@ import * as _ from 'lodash';
 
 
 /** Массив с объектами тракторов */
-export const tractorsLibrary: any = _.stubArray();
+export let tractorsLibrary: any = _.stubObject();
 
 
 /** T-130M */
@@ -24,7 +24,7 @@ export const t130m: ITraktor = {
     },
     totalIntensity: 137,
     farmExpenses: 0.18,
-     fuelMaterials: {
+    fuelMaterials: {
         dieselFuel: {
             to1: 1.0,
             to2: 4.0,
@@ -63,7 +63,7 @@ export const t100m: ITraktor = {
     },
     totalIntensity: 112,
     farmExpenses: 0.18,
-     fuelMaterials: {
+    fuelMaterials: {
         dieselFuel: {
             to1: 1.0,
             to2: 4.0,
@@ -629,3 +629,7 @@ export const t16: ITraktor = {
         }
     }
 };
+
+
+// Заполняем главный массив созданными объектами тракторов.
+tractorsLibrary = { t130m, t100m, k700a, k701, t4a, dt75m, t150k, t70s, mtz80, mtz82, umz6l, t40m, t40am, t25a, t25a1, t16 };

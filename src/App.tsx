@@ -1,18 +1,26 @@
+/** Импортируем React */
 import * as React from 'react';
+/** импортируем стили, для оформления страницы */
+import 'semantic-ui-css/semantic.css';
+/** Библиотека с характеристиками тракторов */
+import { tractorsLibrary } from './constants/TractorsCharacteristics';
+import MainWindow from './components/MainWindowComponent';
 
+
+/**
+ * Главный класс приложения.
+ */
 class App extends React.Component<{}, null> {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    /**
+     * Рендер объекта. 
+     */
+    render() {
+        console.info(tractorsLibrary);
+        // Отрисовываем компонент в браузере.
+        return (
+            <MainWindow />
+        );
+    }
 }
 
 export default App;
