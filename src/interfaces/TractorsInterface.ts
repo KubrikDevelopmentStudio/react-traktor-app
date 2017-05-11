@@ -1,4 +1,4 @@
-interface Traktor {
+interface ITraktor {
     // Трудоемкость одного ТО, ч.
     maintenance: {
         // Первое ТО.
@@ -18,8 +18,8 @@ interface Traktor {
     fuelMaterials?: {
         // Дизельное топливо.
         dieselFuel: {
-            // единица измерения.
-            unit: 'л',
+            // Единица измерения.
+            unit?: 'л',
             // Ежегодное ТО.
             eto?: number,
             // Первое ТО.
@@ -34,7 +34,7 @@ interface Traktor {
         // Моторное масло.
         motorOil: {
             // Единица измерения.
-            unit: 'кг',
+            unit?: 'кг',
             // Ежегодное ТО.
             eto?: number,
             // Первое ТО.
@@ -49,7 +49,7 @@ interface Traktor {
         // Трансмиссионное масло.
         transmissionOil?: {
             // Единица измерения.
-            unit: 'кг',
+            unit?: 'кг',
             // Ежегодное ТО.
             eto?: number,
             // Первое ТО.
@@ -64,7 +64,7 @@ interface Traktor {
         // Смазка пластичная.
         lubricant: {
             // Единица измерения.
-            unit: 'кг',
+            unit?: 'кг',
             // Ежегодное ТО.
             eto?: number,
             // Первое ТО.
@@ -79,4 +79,4 @@ interface Traktor {
     }
 };
 
-export default Traktor;
+export default ITraktor;
