@@ -30,7 +30,7 @@ export default class MainFrame extends React.Component<{}, null> {
             <Segment>
                 <Form>
                     <Form.Field>
-
+                        <OperationCountFrame />
                     </Form.Field>
                 </Form>
             </Segment>
