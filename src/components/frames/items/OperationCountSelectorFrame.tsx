@@ -6,7 +6,9 @@ import * as React from 'react';
 import {
     Select,
     Grid,
-    Segment
+    Segment,
+    Header,
+    Icon
 } from 'semantic-ui-react';
 /** Класс управления логикой приложения */
 import App from '../../../classes/App';
@@ -85,9 +87,15 @@ export default class OperationCountFrame extends React.Component<IAppTransfer, n
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>
-                            <label>Выберите количество технолигиеский операций</label>
+                            <Header as='h4' icon>
+                                <Icon name='numbered list' />
+                                {`Операции`}
+                                <Header.Subheader>
+                                    {`Выберите количество технолигиеский операций`}
+                                </Header.Subheader>
+                            </Header>
                         </Grid.Column>
-                        <Grid.Column>
+                        <Grid.Column textAlign='center' verticalAlign='middle'>
                             <Select placeholder='Количество технологических операций' options={operationCount} value={selectedValue} onChange={this.handleChange} />
                         </Grid.Column>
                     </Grid.Row>

@@ -7,7 +7,9 @@ import {
     Grid,
     Input,
     Label,
-    Segment
+    Segment,
+    Header, 
+    Icon
 } from 'semantic-ui-react';
 /** Класс управления логикой приложения */
 import App from '../../../classes/App';
@@ -143,7 +145,13 @@ export default class OperationCaption extends React.Component<IAppTransfer, null
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>
-                            <label>Введите произвольное название операции</label>
+                            <Header as='h4' icon>
+                                <Icon name='edit' />
+                                {`Название операции`}
+                                <Header.Subheader>
+                                    {`Введите произвольное название операции`}
+                                </Header.Subheader>
+                            </Header>
                         </Grid.Column>
                         <Grid.Column>
                             <Input

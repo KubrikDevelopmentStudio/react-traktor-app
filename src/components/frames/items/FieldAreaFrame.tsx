@@ -7,7 +7,9 @@ import {
     Grid,
     Input,
     Label,
-    Segment
+    Segment,
+    Header,
+    Icon
 } from 'semantic-ui-react';
 /** Класс управления логикой приложения */
 import App from '../../../classes/App';
@@ -144,11 +146,19 @@ export default class FieladArea extends React.Component<IAppTransfer, null> {
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>
-                            <label>Введите площадь поля</label>
+                            <Header as='h4' icon>
+                                <Icon name='codepen' />
+                                {`Площадь поля`}
+                                <Header.Subheader>
+                                    {`Введите площадь поля`}
+                                </Header.Subheader>
+                            </Header>
                         </Grid.Column>
-                        <Grid.Column>
+                        <Grid.Column textAlign='center' verticalAlign='middle'>
                             <Input
                                 error={errorInput}
+                                label={`Га`}
+                                labelPosition='right'
                                 placeholder='Площадь поля'
                                 value={areaValue}
 

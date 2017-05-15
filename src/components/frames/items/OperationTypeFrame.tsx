@@ -6,7 +6,9 @@ import * as React from 'react';
 import {
     Grid,
     Dropdown,
-    Segment
+    Segment,
+    Header, 
+    Icon
 } from 'semantic-ui-react';
 /** Класс управления логикой приложения */
 import App from '../../../classes/App';
@@ -85,9 +87,15 @@ export default class OperationType extends React.Component<IAppTransfer, null> {
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>
-                            <label>Выберите тип проводимой работы</label>
+                             <Header as='h4' icon>
+                                <Icon name='legal' />
+                                {`Проводимые работы`}
+                                <Header.Subheader>
+                                    {`Выберите тип проводимой работы`}
+                                </Header.Subheader>
+                            </Header>
                         </Grid.Column>
-                        <Grid.Column>
+                        <Grid.Column textAlign='center' verticalAlign='middle'>
                             <Dropdown placeholder='Выберите тип проводимой операции'
                                 fluid
                                 search

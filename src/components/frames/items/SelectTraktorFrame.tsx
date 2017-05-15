@@ -6,7 +6,9 @@ import * as React from 'react';
 import {
     Dropdown,
     Grid,
-    Segment
+    Segment,
+    Header,
+    Icon
 } from 'semantic-ui-react';
 /** Класс управления логикой приложения */
 import App from '../../../classes/App';
@@ -86,9 +88,15 @@ export default class OperationCountFrame extends React.Component<IAppTransfer, n
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>
-                            <label>Выберите трактор из списка</label>
+                            <Header as='h4' icon>
+                                <Icon name='shipping' />
+                                {`Трактор`}
+                                <Header.Subheader>
+                                    {`Выберите трактор из списка`}
+                                </Header.Subheader>
+                            </Header>
                         </Grid.Column>
-                        <Grid.Column>
+                        <Grid.Column textAlign='center' verticalAlign='middle'>
                             <Dropdown placeholder='Выберите тип проводимой операции'
                                 fluid
                                 search
