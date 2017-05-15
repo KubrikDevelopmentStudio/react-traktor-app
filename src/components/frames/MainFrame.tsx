@@ -12,6 +12,10 @@ import OperationCountFrame from './items/OperationCountSelectorFrame';
 import FieldArea from './items/FieldAreaFrame';
 /** Компонент выбора типа проводимых работ */
 import OperationType from './items/OperationTypeFrame';
+/** Компонент выбора типа проводимых работ */
+import OperationCaption from './items/OperationCaptionFrame';
+/** Компонент выбора трактора */
+import SelectTraktor from './items/SelectTraktorFrame';
 
 
 /**
@@ -58,6 +62,12 @@ export default class MainFrame extends React.Component<{}, null> {
                     </Form.Field>
                     <Form.Field>
                         <OperationType componentShow={appLevel >= 2} app={this.app} />
+                    </Form.Field>
+                    <Form.Field>
+                        <OperationCaption componentShow={appLevel >= 3} app={this.app} />
+                    </Form.Field>
+                    <Form.Field>
+                        <SelectTraktor componentShow={appLevel >= 4} app={this.app} />
                     </Form.Field>
             </Form>
         );

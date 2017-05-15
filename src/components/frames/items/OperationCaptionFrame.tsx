@@ -16,7 +16,10 @@ import {
 } from '../../../interfaces/AppInterfaces';
 import {
     IErrorLabel
-} from '../../../interfaces/AppInterfaces'
+} from '../../../interfaces/AppInterfaces';
+import {
+    MIN_OPERATION_CAPTION_SIZE
+} from '../../../constants/constants';
 
 
 /**
@@ -58,7 +61,7 @@ class ErrorLabel extends React.Component<IErrorLabel, null> {
         // Если не нужно отображать компонент.
         if (!errorInput) return null;
         // Отображаем компонент
-        return (<Label basic color='red' pointing>Можно вводить только цифры!</Label>);
+        return (<Label basic color='red' pointing>{`Минимальная длина ${MIN_OPERATION_CAPTION_SIZE} символа(-ов)!`}</Label>);
     }
 }
 
@@ -66,7 +69,7 @@ class ErrorLabel extends React.Component<IErrorLabel, null> {
 /**
  * Компонент ввода площади поля.
  */
-export default class FieladArea extends React.Component<IAppTransfer, null> {
+export default class OperationCaption extends React.Component<IAppTransfer, null> {
     /**
      * Конструктор.
      */
@@ -76,7 +79,7 @@ export default class FieladArea extends React.Component<IAppTransfer, null> {
         // Стейт по-умолчанию.
         this.state = {
             // Значение введенной площади.
-            areaValue: _.stubString(),
+            operCaption: _.stubString(),
             // Значение отображения компонента.
             componentShow: props.componentShow,
             // Ошибочный ввод.
@@ -97,23 +100,19 @@ export default class FieladArea extends React.Component<IAppTransfer, null> {
      * Ввод нового значения площади поля.
      */
     handleChange = (event: any, { value }: any) => {
-        // Получаем код введенного символа.
-        const charCode: number = value.charCodeAt(value.length - 1);
-        // Смотрим, чтобы онр был в диапозоне цифр: коды от 48 до 57.
-        if (charCode < 48 || charCode > 57) {
-            // Выводим сообщение, что нужно вводить только цифры.
-            this.setState({ errorInput: true });
-            return;
-        }
         // Обновляем стейт.
-        this.setState({ errorInput: false, areaValue: value });
+        this.setState({ errorInput: false, operCaption: value });
         // Смотрим, что мы не стерли данные в процессе.
-        if (value.length > 0) {
+        if (value.length >= MIN_OPERATION_CAPTION_SIZE) {
+            // Убираем сообщение об ошибке.
+            this.setState({ errorInput: false });
             // Устанавливаем следующий уровень приложения.
-            this.app.setFieldArea(parseInt(value));
+            this.app.setOperationCaption(value);
         } else {
+            // Выводим сообщение о минимальной длине ввода в три символа.
+            this.setState({ errorInput: true });
             // Возвращаемся на текущий уровень.
-            this.app.setAppLevel(1);
+            this.app.setAppLevel(3);
         }
     }
 
@@ -128,14 +127,14 @@ export default class FieladArea extends React.Component<IAppTransfer, null> {
         this.setState({ componentShow });
     }
 
-    
+
     /**
      * Рендер компонента.
      */
     render() {
         // Отрисовываем компонент.
         // Получаем необходимые свойства.
-        const { areaValue, componentShow, errorInput } = this.state;
+        const { operCaption, componentShow, errorInput } = this.state;
         // Проверяем условие отображение компонента.
         if (!componentShow) return null;
         // Отрисовываем объект.
@@ -144,13 +143,13 @@ export default class FieladArea extends React.Component<IAppTransfer, null> {
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>
-                            <label>Введите площадь поля</label>
+                            <label>Введите произвольное название операции</label>
                         </Grid.Column>
                         <Grid.Column>
                             <Input
                                 error={errorInput}
-                                placeholder='Площадь поля'
-                                value={areaValue}
+                                placeholder='Наименование операции'
+                                value={operCaption}
 
                                 onChange={this.handleChange}
                             />

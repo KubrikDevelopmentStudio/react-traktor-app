@@ -102,6 +102,14 @@ class App {
     }
 
 
+    /** Сеттер уровня приложения */
+    setAppLevel(level: number) {
+        this.level = level;
+
+        this.callback(`setLevel`);
+    }
+    
+
     /** Сеттер количества операций */
     setOperationCount(count: number) {
         // Нельзя установить больше MAX_COUNT.

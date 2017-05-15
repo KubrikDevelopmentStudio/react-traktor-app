@@ -633,3 +633,8 @@ export const t16: ITraktor = {
 
 // Заполняем главный массив созданными объектами тракторов.
 tractorsLibrary = { t130m, t100m, k700a, k701, t4a, dt75m, t150k, t70s, mtz80, mtz82, umz6l, t40m, t40am, t25a, t25a1, t16 };
+
+/** Список с тракторами для Select */
+export let TraktorsList = _.stubArray();
+/** Получаем названия всех тракторов */
+_.forEach(tractorsLibrary, (value, traktorCaption) => TraktorsList.push({key: traktorCaption, value: traktorCaption, text: traktorCaption.toUpperCase()}))

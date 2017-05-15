@@ -1,41 +1,42 @@
-/** Импортируем библиотеку для работы с данными */
+/** Импортируем библиотеку для обработки данных */
 import * as _ from 'lodash';
 /** Импортируем React */
 import * as React from 'react';
-/** Импортируем необходимые компоненты Semantic */
+/** Импортируем визуальные объекты */
 import {
-    Grid,
     Dropdown,
+    Grid,
     Segment
 } from 'semantic-ui-react';
 /** Класс управления логикой приложения */
 import App from '../../../classes/App';
 /** Импорт интерфейса для проброски класса приложения */
 import {
-    IAppTransfer
+    IAppTransfer,
 } from '../../../interfaces/AppInterfaces';
-/** Импорт списка возможных работ */
+/** Импорт количества возможных операций */
 import {
-    OperationTypeList
-} from '../../../constants/constants'
+    TraktorsList,
+    tractorsLibrary
+} from '../../../constants/TractorsCharacteristics'
 
 
 /**
- * Компонент ввода площади поля.
+ * Объект выбора количестватехнологических операций.
  */
-export default class OperationType extends React.Component<IAppTransfer, null> {
+export default class OperationCountFrame extends React.Component<IAppTransfer, null> {
     /**
-     * Конструктор.
+     * Конструктор класса.
      */
     constructor(props: any) {
-        // Прокидываем пропы.
+        // Прокидываем свойства в класс.
         super(props);
         // Стейт по-умолчанию.
         this.state = {
-            // Значение отображения компонента.
+            // Отображение компонента по-умолчанию.
             componentShow: props.componentShow,
-            // По умолчанию выбранный тип работ.
-            selectedWorktype: _.stubString()
+            // Выбранное количество операций.
+            selectedTraktor: _.stubString()
         };
         // Получаем главный класс приложения.
         this.app = props.app;
@@ -49,13 +50,13 @@ export default class OperationType extends React.Component<IAppTransfer, null> {
 
 
     /**
-     * Ввод нового значения площади поля.
+     * Событие выбора количества технологических операций.
      */
     handleChange = (event: any, { value }: any) => {
-        // Выбор типа работ.
-        this.setState({ selectedWorktype: value })
-        // Обновления ифнормации в классе.
-        this.app.setWorkType(parseInt(value));
+        // Установка нового значения.
+        this.setState({ selectedValue: value });
+        // Установка значения в главном классе приложения.
+        this.app.setSelectTraktor(tractorsLibrary[value]);
     }
 
 
@@ -70,13 +71,13 @@ export default class OperationType extends React.Component<IAppTransfer, null> {
     }
 
 
+
     /**
-     * Рендер компонента.
+     * Рендер объекта.
      */
     render() {
-        // Отрисовываем компонент.
         // Получаем необходимые свойства.
-        const { componentShow, selectedWorktype } = this.state;
+        const { componentShow, selectedTraktor } = this.state;
         // Проверяем условие отображение компонента.
         if (!componentShow) return null;
         // Отрисовываем объект.
@@ -85,7 +86,7 @@ export default class OperationType extends React.Component<IAppTransfer, null> {
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>
-                            <label>Выберите тип проводимой работы</label>
+                            <label>Выберите трактор из списка</label>
                         </Grid.Column>
                         <Grid.Column>
                             <Dropdown placeholder='Выберите тип проводимой операции'
@@ -93,8 +94,8 @@ export default class OperationType extends React.Component<IAppTransfer, null> {
                                 search
                                 selection
                                 noResultsMessage={`Искомый тип работ не найден!`}
-                                options={OperationTypeList}
-                                defaultValue={selectedWorktype}
+                                options={TraktorsList}
+                                defaultValue={selectedTraktor}
                                 onChange={this.handleChange}
                             />
                         </Grid.Column>
