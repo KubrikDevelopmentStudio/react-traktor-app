@@ -10,7 +10,8 @@ export let operationCount = _.stubArray();
 for (let i = 0; i < MAX_OPERATION_COUNT; i++) {
     // Заполняем в необходимом виде.
     operationCount.push({key: i, value: (i + 1), text: `${i + 1}`});
-}
+};
+
 
 /** Множество возможных операций */
 export const enum OperationType {
@@ -32,7 +33,21 @@ export const enum OperationType {
     TransportWorks,
     // Химзащита, снегозадержание.
     ChemicalProtection
-}
+};
+
+
+/** Список операций для вывода */
+export const OperationTypeList = [
+    {key: OperationType.ContinuousCultivation, value: OperationType.ContinuousCultivation, text: `Лущение, пахота, дискование, сплошная культивация, боронование`},
+    {key: OperationType.InterrowCultivation, value: OperationType.InterrowCultivation, text: `Нарезка гребней, междурядная культивация`},
+    {key: OperationType.Planting, value: OperationType.Planting, text: `Посев, посадка`},
+    {key: OperationType.CleaningPotatoes, value: OperationType.CleaningPotatoes, text: `Кошение ботвы, уборка картофеля ,свеклы`},
+    {key: OperationType.HarvestingOfHay, value: OperationType.HarvestingOfHay, text: `Заготовка сена, сенажа, силоса`},
+    {key: OperationType.CleaningOfCereals, value: OperationType.CleaningOfCereals, text: `Уборка зерновых`},
+    {key: OperationType.Fertilizer, value: OperationType.Fertilizer, text: `Транспортировка и разбрасывание минеральных и органических удобрений`},
+    {key: OperationType.TransportWorks, value: OperationType.TransportWorks, text: `Погрузочные, транспортные работы, буртование`},
+    {key: OperationType.ChemicalProtection, value: OperationType.ChemicalProtection, text: `Химзащита, снегозадержание`}
+];
 
 
 /** Тип груза для перевозки */

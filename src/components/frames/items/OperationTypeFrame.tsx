@@ -1,41 +1,41 @@
-/** Импортируем библиотеку для обработки данных */
+/** Импортируем библиотеку для работы с данными */
 import * as _ from 'lodash';
 /** Импортируем React */
 import * as React from 'react';
-/** Импортируем визуальные объекты */
+/** Импортируем необходимые компоненты Semantic */
 import {
-    Select,
     Grid,
+    Dropdown,
     Segment
 } from 'semantic-ui-react';
 /** Класс управления логикой приложения */
 import App from '../../../classes/App';
 /** Импорт интерфейса для проброски класса приложения */
 import {
-    IAppTransfer,
+    IAppTransfer
 } from '../../../interfaces/AppInterfaces';
-/** Импорт количества возможных операций */
+/** Импорт списка возможных работ */
 import {
-    operationCount
+    OperationTypeList
 } from '../../../constants/constants'
 
 
 /**
- * Объект выбора количестватехнологических операций.
+ * Компонент ввода площади поля.
  */
-export default class OperationCountFrame extends React.Component<IAppTransfer, null> {
+export default class OperationType extends React.Component<IAppTransfer, null> {
     /**
-     * Конструктор класса.
+     * Конструктор.
      */
     constructor(props: any) {
-        // Прокидываем свойства в класс.
+        // Прокидываем пропы.
         super(props);
         // Стейт по-умолчанию.
         this.state = {
-            // Отображение компонента по-умолчанию.
+            // Значение отображения компонента.
             componentShow: props.componentShow,
-            // Выбранное количество операций.
-            selectedValue: _.stubString()
+            // По умолчанию выбранный тип работ.
+            selectedWorktype: _.stubString()
         };
         // Получаем главный класс приложения.
         this.app = props.app;
@@ -49,13 +49,13 @@ export default class OperationCountFrame extends React.Component<IAppTransfer, n
 
 
     /**
-     * Событие выбора количества технологических операций.
+     * Ввод нового значения площади поля.
      */
     handleChange = (event: any, { value }: any) => {
-        // Установка нового значения.
-        this.setState({ selectedValue: value });
-        // Установка значения в главном классе приложения.
-        this.app.setOperationCount(parseInt(value));
+        // Выбор типа работ.
+        this.setState({ selectedWorktype: value })
+        // Обновления ифнормации в классе.
+        this.app.setWorkType(parseInt(value));
     }
 
 
@@ -70,13 +70,13 @@ export default class OperationCountFrame extends React.Component<IAppTransfer, n
     }
 
 
-
     /**
-     * Рендер объекта.
+     * Рендер компонента.
      */
     render() {
+        // Отрисовываем компонент.
         // Получаем необходимые свойства.
-        const { componentShow, selectedValue } = this.state;
+        const { componentShow, selectedWorktype } = this.state;
         // Проверяем условие отображение компонента.
         if (!componentShow) return null;
         // Отрисовываем объект.
@@ -85,10 +85,18 @@ export default class OperationCountFrame extends React.Component<IAppTransfer, n
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>
-                            <label>Выберите количество технолигиеский операций</label>
+                            <label>Введите площадь поля</label>
                         </Grid.Column>
                         <Grid.Column>
-                            <Select placeholder='Количество технологических операций' options={operationCount} value={selectedValue} onChange={this.handleChange} />
+                            <Dropdown placeholder='Выберите тип проводимой операции'
+                                fluid
+                                search
+                                selection
+                                noResultsMessage={`Искомый тип работ не найден!`}
+                                options={OperationTypeList}
+                                defaultValue={selectedWorktype}
+                                onChange={this.handleChange}
+                            />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>

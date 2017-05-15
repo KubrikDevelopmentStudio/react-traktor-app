@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
 /** Импортируем интерфейс трактора */
 import ITraktor from '../interfaces/TractorsInterface';
 /** Тип выполняемых работ */
@@ -9,7 +9,9 @@ import {
 /** Максимальное количество операций. */
 import {
     MAX_OPERATION_COUNT
-} from '../constants/constants'
+} from '../constants/constants';
+
+
 /**
  * Основной класс с логикой приложения.
  */
@@ -20,17 +22,61 @@ class App {
      */
     constructor(callback: any) {
         // Применение callback.
-        this.callback = callback;
+        this.wildCallback = callback;
+        // Установка уровня по-умолчанию при нициализации.
+        this.level = 0;
     }
 
 
     /** Функция-callback */
-    private callback: any;
+    private callback = (param: string) => {
+        // Отображаем компоненты.
+        switch (param) {
+            case 'operationCount':
+                if (this.level < 1) this.level = 1;
+                break;
+            case 'fieldArea':
+                if (this.level < 2) this.level = 2;
+                break;
+            case 'workType':
+                if (this.level < 3) this.level = 3;
+                break;
+            case 'operationCaption':
+                if (this.level < 4) this.level = 4;
+                break;
+            case 'selectTraktor':
+                if (this.level < 5) this.level = 5;
+                break;
+            case 'selectMachine':
+                if (this.level < 6) this.level = 6;
+                break;
+            case 'cargoType':
+                if (this.level < 7) this.level = 7;
+                break;
+            case 'unitsCount':
+                if (this.level < 8) this.level = 8;
+                break;
+            case 'machineCount':
+                if (this.level < 9) this.level = 9;
+                break;
+            case 'workersCount':
+                if (this.level < 10) this.level = 10;
+                break;
+        }
+        // Вызов внешней функции.
+        this.wildCallback(param);
+    };
+
+
+    /** Внешняя функция */
+    private wildCallback: any;
+    /** Текцщий уровень приложения */
+    private level: number;
 
 
     /** Количество технологических операций.*/
     private operationCount: number;
-    /** Площадь поля.*/
+    /** Площадь поля. */
     private fieldArea: number;
     /** Тип проводимых работ.*/
     private workType: OperationType;
@@ -50,75 +96,101 @@ class App {
     private workersCount: number;
 
 
+    /** Геттер уровня приложения */
+    getAppLevel() {
+        return this.level;
+    }
+
+
     /** Сеттер количества операций */
-    set setOperationCount(count: number) {
+    setOperationCount(count: number) {
         // Нельзя установить больше MAX_COUNT.
         if (count > MAX_OPERATION_COUNT) return;
         // Устанавливаем новое значение.
         this.operationCount = count;
+
+        this.callback(`operationCount`);
     };
 
 
     /** Сеттер площади поля */
-    set setFieldArea(area: number) {
+    setFieldArea(area: number) {
         // Устанавливаем новое значение.
         this.fieldArea = area;
+
+        this.callback(`fieldArea`);
     };
 
 
     /** Сеттер типа проводимых работ */
-    set setWorkType(wType: OperationType) {
+    setWorkType(wType: OperationType) {
         // Устанавливаем новое значение.
         this.workType = wType;
+
+        this.callback(`workType`);
     };
 
 
     /** Сеттер названия операции */
-    set setOperationCaption(caption: string) {
+    setOperationCaption(caption: string) {
         // Устанавливаем новое значение.
         this.operationCaption = caption;
+
+        this.callback(`operationCaption`);
     };
 
 
     /** Сеттер выбора трактора */
-    set setSelectTraktor(traktor: ITraktor) {
+    setSelectTraktor(traktor: ITraktor) {
         // Устанавливаем новое значение.
         this.selectedTraktor = traktor;
+
+        this.callback(`selectTraktor`);
     };
 
 
     /** Сеттер выбора машины */
-    set setSelectMachine(machine: string) {
+    setSelectMachine(machine: string) {
         // Устанавливаем новое значение.
         this.selectedMachine = machine;
+
+        this.callback(`selectMachine`);
     };
 
 
     /** Сеттер выбора типа груза */
-    set setCargoType(cType: CargoType) {
+    setCargoType(cType: CargoType) {
         // Устанавливаем новое значение.
         this.cargoType = cType;
+
+        this.callback(`cargoType`);
     };
 
 
     /** Сеттер выбора типа груза */
-    set setUnitsCount(count: number) {
+    setUnitsCount(count: number) {
         // Устанавливаем новое значение.
         this.unitsCount = count;
+
+        this.callback(`unitsCount`);
     };
 
 
     /** Сеттер установки количества машин, входящих в агрегат */
-    set setMachineCount(count: number) {
+    setMachineCount(count: number) {
         // Устанавливаем новое значение.
         this.machineCount = count;
+
+        this.callback(`machineCount`);
     };
 
 
     /** Сеттер установки количества рабочих, требующихся для обслуживания */
-    set setWorkersCount(count: number) {
+    setWorkersCount(count: number) {
         // Устанавливаем новое значение.
         this.workersCount = count;
+
+        this.callback(`workersCount`);
     };
 }
 

@@ -27,7 +27,7 @@ export default class MainWindow extends React.Component<{}, null> {
         // Отрисовываем компонент в браузере.
         return (
             /*Размечиваем страницу сеткой*/
-            <Grid columns={3} celled>
+            <Grid columns={3} padded>
                 {/*Создаем строку в сетке и выравниваем ее по центру*/}
                 <Grid.Row columns={2} centered>
                     {/*Создаем колонку в которой будет располагаться контент страницы*/}
