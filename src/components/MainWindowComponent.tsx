@@ -4,10 +4,11 @@ import * as React from 'react';
 import {
     Grid
 } from 'semantic-ui-react';
-
+/** Импорт класса для управления логикой приложения */
+import App from '../classes/App';
 import MainFrame from './frames/MainFrame';
 import HeaderFrame from './frames/items/HeaderFrame';
-
+import MainInfoFrame from './frames/MainInfoFrame';
 
 /**
  * Главный объект приложения.
@@ -19,7 +20,28 @@ export default class MainWindow extends React.Component<{}, null> {
     constructor(props: any) {
         // Прокидываем свойства в класс.
         super(props);
+        // Создаем экземпляр главного класса приложения.
+        this.app = new App(this.callback);
     }
+
+
+    /**
+     * Коллбэк функция.
+     */
+    callback = (cbParam: string) => {
+        console.info(`Сработал callback с параметром: ${cbParam}!`);
+        console.info(`Содержимое класса App: `, this.app);
+
+        this.forceUpdate();
+    }
+
+
+    /**
+     * Экземпляр класса для управления логикой приложения.
+     */
+    app: App;
+
+
     /**
      * Рендер объекта.
      */
@@ -27,9 +49,9 @@ export default class MainWindow extends React.Component<{}, null> {
         // Отрисовываем компонент в браузере.
         return (
             /*Размечиваем страницу сеткой*/
-            <Grid columns={3} padded>
+            <Grid columns={4} padded>
                 {/*Создаем строку в сетке и выравниваем ее по центру*/}
-                <Grid.Row columns={2} centered>
+                <Grid.Row columns={4} centered>
                     {/*Создаем колонку в которой будет располагаться контент страницы*/}
                     <Grid.Column textAlign='center'>
                         {/*Основной объект приложения*/}
@@ -37,11 +59,15 @@ export default class MainWindow extends React.Component<{}, null> {
                     </Grid.Column>
                 </Grid.Row>
                 {/*Создаем строку в сетке и выравниваем ее по центру*/}
-                <Grid.Row columns={2} centered>
+                <Grid.Row columns={4}>
+                    <Grid.Column width={5} verticalAlign='middle'>
+                        {/*Компонент с общей информацией*/}
+                        <MainInfoFrame componentShow={true} app={this.app}></MainInfoFrame>
+                    </Grid.Column>
                     {/*Создаем колонку в которой будет располагаться контент страницы*/}
-                    <Grid.Column textAlign='center'>
+                    <Grid.Column width={10} textAlign='center' verticalAlign='middle'>
                         {/*Основной объект приложения*/}
-                        <MainFrame />
+                        <MainFrame app={this.app} />
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

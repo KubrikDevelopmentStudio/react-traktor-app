@@ -6,6 +6,9 @@ import {
 } from 'semantic-ui-react';
 /** Импорт класса для управления логикой приложения */
 import App from '../../classes/App';
+import {
+    IAppTransfer
+} from '../../interfaces/AppInterfaces';
 /** Компонент выбора количества операций */
 import OperationCountFrame from './items/OperationCountSelectorFrame';
 /** Компонент ввода площади поля */
@@ -21,7 +24,7 @@ import SelectTraktor from './items/SelectTraktorFrame';
 /**
  * Основной объект приложения.
  */
-export default class MainFrame extends React.Component<{}, null> {
+export default class MainFrame extends React.Component<IAppTransfer, null> {
     /**
      * Конструктор класса.
      */
@@ -29,13 +32,7 @@ export default class MainFrame extends React.Component<{}, null> {
         // Прокидываем свойства в класс.
         super(props);
         // Создаем экземпляр главного класса приложения.
-        this.app = new App(this.callback);
-    }
-
-    callback = (cbParam: string) => {
-        console.info(`Сработал callback с параметром: ${cbParam}!`);
-        console.info(`Содержимое класса App: `, this.app);
-        this.forceUpdate();
+        this.app = props.app;
     }
 
 
@@ -57,18 +54,18 @@ export default class MainFrame extends React.Component<{}, null> {
                 <Form.Field>
                     <OperationCountFrame componentShow={true} app={this.app} />
                 </Form.Field>
-                    <Form.Field>
-                        <FieldArea componentShow={appLevel >= 1} app={this.app} />
-                    </Form.Field>
-                    <Form.Field>
-                        <OperationType componentShow={appLevel >= 2} app={this.app} />
-                    </Form.Field>
-                    <Form.Field>
-                        <OperationCaption componentShow={appLevel >= 3} app={this.app} />
-                    </Form.Field>
-                    <Form.Field>
-                        <SelectTraktor componentShow={appLevel >= 4} app={this.app} />
-                    </Form.Field>
+                <Form.Field>
+                    <FieldArea componentShow={appLevel >= 1} app={this.app} />
+                </Form.Field>
+                <Form.Field>
+                    <OperationType componentShow={appLevel >= 2} app={this.app} />
+                </Form.Field>
+                <Form.Field>
+                    <OperationCaption componentShow={appLevel >= 3} app={this.app} />
+                </Form.Field>
+                <Form.Field>
+                    <SelectTraktor componentShow={appLevel >= 4} app={this.app} />
+                </Form.Field>
             </Form>
         );
     }

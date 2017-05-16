@@ -16,5 +16,5 @@ export interface IAppTransfer {
     // Класс для работы с логикой приложения.
     app: App;
     // Отображение компонента.
-    componentShow: boolean;
+    componentShow?: boolean;
 }

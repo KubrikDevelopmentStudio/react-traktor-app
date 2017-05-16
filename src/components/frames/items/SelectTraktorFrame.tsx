@@ -73,7 +73,6 @@ export default class OperationCountFrame extends React.Component<IAppTransfer, n
     }
 
 
-
     /**
      * Рендер объекта.
      */

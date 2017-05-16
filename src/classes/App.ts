@@ -1,15 +1,14 @@
-// import * as _ from 'lodash';
+import * as _ from 'lodash';
 /** Импортируем интерфейс трактора */
 import ITraktor from '../interfaces/TractorsInterface';
 /** Тип выполняемых работ */
 import {
+    MAX_OPERATION_COUNT,
     OperationType,
-    CargoType
+    CargoType,
+    OperationTypeList,
 } from '../constants/constants';
 /** Максимальное количество операций. */
-import {
-    MAX_OPERATION_COUNT
-} from '../constants/constants';
 
 
 /**
@@ -101,6 +100,51 @@ class App {
         return this.level;
     }
 
+    /** Геттер текущих значений */
+    getData() {
+        return {
+            operationCount: {
+                caption: 'Количество операций',
+                value: this.operationCount
+            },
+            fieldArea: {
+                caption: 'Площадь поля, Га',
+                value: this.fieldArea
+            },
+            workType: {
+                caption: 'Тип проводимых работ',
+                value: !_.isUndefined(this.workType) ?  _.filter(OperationTypeList, type => type.value === this.workType)[0].text : undefined
+            },
+            operationCaption: {
+                caption: 'Название операции',
+                value: this.operationCaption
+            },
+            selectedTraktor: {
+                caption: 'Выбранный трактор',
+                value: !_.isUndefined(this.selectedTraktor) ? this.selectedTraktor.model : undefined
+            },
+            selectedMachine: {
+                caption: 'Выбранный автомобиль',
+                value: this.selectedMachine
+            },
+            cargoType: {
+                caption: 'Груз для перевозки',
+                value: this.cargoType
+            },
+            unitsCount: {
+                caption: 'Количество агрегатов, шт.',
+                value: this.unitsCount
+            },
+            machineCount: {
+                caption: 'Количество рабочих машин в агрегате, шт.',
+                value: this.machineCount
+            },
+            workersCount: {
+                caption: 'Обслуживающий персонал, чел.',
+                value:this.workersCount
+            }
+        };
+    }
 
     /** Сеттер уровня приложения */
     setAppLevel(level: number) {
