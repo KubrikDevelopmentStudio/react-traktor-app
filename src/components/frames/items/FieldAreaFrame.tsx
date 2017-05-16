@@ -157,8 +157,6 @@ export default class FieladArea extends React.Component<IAppTransfer, null> {
                         <Grid.Column textAlign='center' verticalAlign='middle'>
                             <Input
                                 error={errorInput}
-                                label={`Га`}
-                                labelPosition='right'
                                 placeholder='Площадь поля'
                                 value={areaValue}
 

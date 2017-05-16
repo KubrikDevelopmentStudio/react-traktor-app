@@ -67,4 +67,24 @@ export const enum CargoType {
     MineralFertilizers,
     // Органические удобрения.
     OrganicFertilizers
-}
+};
+
+
+/** Список возможных грузов для перевозки */
+export const CargoTypeList: any[] = [
+    {key: CargoType.Hay, value: CargoType.Senage, text: `Сено`},
+    {key: CargoType.Senage, value: CargoType.Senage, text: `Сенаж`},
+    {key: CargoType.Silage, value: CargoType.Silage, text: `Силос`},
+    {key: CargoType.Corn, value: CargoType.Corn, text: `Зерно`},
+    {key: CargoType.Potatoes, value: CargoType.Potatoes, text: `Картошка`},
+    {key: CargoType.MineralFertilizers, value: CargoType.MineralFertilizers, text: `Минеральные удобрения`},
+    {key: CargoType.OrganicFertilizers, value: CargoType.OrganicFertilizers, text: `Органические удобрения`}
+];
+
+
+/** Список возможных машин */
+export const MachineList: any[] = [
+    {key: 'someCar1', value: 'someCar1', text: 'Машина 1'},
+    {key: 'someCar2', value: 'someCar2', text: 'Машина 2'},
+    {key: 'someCar3', value: 'someCar3', text: 'Машина 3'},
+];

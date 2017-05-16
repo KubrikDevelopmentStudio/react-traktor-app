@@ -18,15 +18,14 @@ import {
 } from '../../../interfaces/AppInterfaces';
 /** Импорт количества возможных операций */
 import {
-    TraktorsList,
-    tractorsLibrary
-} from '../../../constants/TractorsCharacteristics'
+    MachineList
+} from '../../../constants/constants'
 
 
 /**
  * Объект выбора количестватехнологических операций.
  */
-export default class SelectTraktorFrame extends React.Component<IAppTransfer, null> {
+export default class SelectMachine extends React.Component<IAppTransfer, null> {
     /**
      * Конструктор класса.
      */
@@ -38,7 +37,7 @@ export default class SelectTraktorFrame extends React.Component<IAppTransfer, nu
             // Отображение компонента по-умолчанию.
             componentShow: props.componentShow,
             // Выбранное количество операций.
-            selectedTraktor: _.stubString()
+            selectedMachine: _.stubString()
         };
         // Получаем главный класс приложения.
         this.app = props.app;
@@ -58,7 +57,7 @@ export default class SelectTraktorFrame extends React.Component<IAppTransfer, nu
         // Установка нового значения.
         this.setState({ selectedValue: value });
         // Установка значения в главном классе приложения.
-        this.app.setSelectTraktor(tractorsLibrary[value]);
+        this.app.setSelectMachine(value);
     }
 
 
@@ -78,7 +77,7 @@ export default class SelectTraktorFrame extends React.Component<IAppTransfer, nu
      */
     render() {
         // Получаем необходимые свойства.
-        const { componentShow, selectedTraktor } = this.state;
+        const { componentShow, selectedMachine } = this.state;
         // Проверяем условие отображение компонента.
         if (!componentShow) return null;
         // Отрисовываем объект.
@@ -88,21 +87,21 @@ export default class SelectTraktorFrame extends React.Component<IAppTransfer, nu
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>
                             <Header as='h4' icon>
-                                <Icon name='settings' />
-                                {`Трактор`}
+                                <Icon name='shipping' />
+                                {`Рабочая машина`}
                                 <Header.Subheader>
-                                    {`Выберите трактор из списка`}
+                                    {`Рабочая машина для выполнения`}
                                 </Header.Subheader>
                             </Header>
                         </Grid.Column>
                         <Grid.Column textAlign='center' verticalAlign='middle'>
-                            <Dropdown placeholder='Выберите трактор'
+                            <Dropdown placeholder='Выберите машину'
                                 fluid
                                 search
                                 selection
-                                noResultsMessage={`Искомый трактор не найден!`}
-                                options={TraktorsList}
-                                defaultValue={selectedTraktor}
+                                noResultsMessage={`Искомая машина не найдена!`}
+                                options={MachineList}
+                                defaultValue={selectedMachine}
                                 onChange={this.handleChange}
                             />
                         </Grid.Column>

@@ -19,6 +19,8 @@ import OperationType from './items/OperationTypeFrame';
 import OperationCaption from './items/OperationCaptionFrame';
 /** Компонент выбора трактора */
 import SelectTraktor from './items/SelectTraktorFrame';
+/** Компонент выбора машины для выполнения */
+import SelectMachine from './items/SelectMachineFrame';
 
 
 /**
@@ -65,6 +67,9 @@ export default class MainFrame extends React.Component<IAppTransfer, null> {
                 </Form.Field>
                 <Form.Field>
                     <SelectTraktor componentShow={appLevel >= 4} app={this.app} />
+                </Form.Field>
+                <Form.Field>
+                    <SelectMachine componentShow={appLevel >= 5} app={this.app} />
                 </Form.Field>
             </Form>
         );

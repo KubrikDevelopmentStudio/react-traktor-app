@@ -65,7 +65,7 @@ export default class MainWindow extends React.Component<{}, null> {
                         <MainInfoFrame componentShow={true} app={this.app}></MainInfoFrame>
                     </Grid.Column>
                     {/*Создаем колонку в которой будет располагаться контент страницы*/}
-                    <Grid.Column width={10} textAlign='center' verticalAlign='middle'>
+                    <Grid.Column width={10} textAlign='center' verticalAlign='top'>
                         {/*Основной объект приложения*/}
                         <MainFrame app={this.app} />
                     </Grid.Column>
