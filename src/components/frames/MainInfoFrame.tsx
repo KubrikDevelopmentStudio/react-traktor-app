@@ -70,7 +70,7 @@ export default class MainInfoFrame extends React.Component<IAppTransfer, null> {
                 <Table.Row warning={!compleate} positive={compleate}>
                     <Table.Cell textAlign='center'>{index++}</Table.Cell>
                     <Table.Cell>{d.caption}</Table.Cell>
-                    <Table.Cell>{d.value}</Table.Cell>
+                    <Table.Cell>{compleate ? d.value : 'Ожидание ввода данных...'}</Table.Cell>
                     <Table.Cell textAlign='center'>{compleate ? <Icon name='checkmark' size='large'/> : <Icon loading name='spinner' size='large'/>}</Table.Cell>
                 </Table.Row>);
         });
