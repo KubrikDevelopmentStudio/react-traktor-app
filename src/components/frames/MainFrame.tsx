@@ -25,6 +25,10 @@ import SelectMachine from './items/SelectMachineFrame';
 import SelectCargoType from './items/SelectCargoTypeFrame';
 /** Компонент выбора количества агрегатов */
 import UnitsCountSelector from './items/UnitsCountSelectorFrame';
+/** Компонент выбора количества машин входящих в агрегат */
+import MachineCount from './items/MachineCountSelectorFrame';
+/** Компонент выбора количества рабочих для обслуживания агрегата */
+import WorkersCount from './items/WorkersCountFrame';
 
 
 /**
@@ -80,6 +84,12 @@ export default class MainFrame extends React.Component<IAppTransfer, null> {
                 </Form.Field>
                 <Form.Field>
                     <UnitsCountSelector componentShow={appLevel >= 7} app={this.app} />
+                </Form.Field>
+                <Form.Field>
+                    <MachineCount componentShow={appLevel >= 8} app={this.app} />
+                </Form.Field>
+                <Form.Field>
+                    <WorkersCount componentShow={appLevel >= 9} app={this.app} />
                 </Form.Field>
             </Form>
         );

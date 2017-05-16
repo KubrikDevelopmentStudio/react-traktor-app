@@ -68,7 +68,7 @@ class ErrorLabel extends React.Component<IErrorLabel, null> {
 /**
  * Компонент ввода площади поля.
  */
-export default class UnitsCountSelector extends React.Component<IAppTransfer, null> {
+export default class MachineCount extends React.Component<IAppTransfer, null> {
     /**
      * Конструктор.
      */
@@ -78,7 +78,7 @@ export default class UnitsCountSelector extends React.Component<IAppTransfer, nu
         // Стейт по-умолчанию.
         this.state = {
             // Значение введенной площади.
-            unitsCount: _.stubString(),
+            machineCount: _.stubString(),
             // Значение отображения компонента.
             componentShow: props.componentShow,
             // Ошибочный ввод.
@@ -108,14 +108,14 @@ export default class UnitsCountSelector extends React.Component<IAppTransfer, nu
             return;
         }
         // Обновляем стейт.
-        this.setState({ errorInput: false, unitsCount: value });
+        this.setState({ errorInput: false, machineCount: value });
         // Смотрим, что мы не стерли данные в процессе.
         if (value.length > 0) {
             // Устанавливаем следующий уровень приложения.
-            this.app.setUnitsCount(parseInt(value));
+            this.app.setMachineCount(parseInt(value));
         } else {
             // Возвращаемся на текущий уровень.
-            this.app.setAppLevel(7);
+            this.app.setAppLevel(8);
         }
     }
 
@@ -137,7 +137,7 @@ export default class UnitsCountSelector extends React.Component<IAppTransfer, nu
     render() {
         // Отрисовываем компонент.
         // Получаем необходимые свойства.
-        const { unitsCount, componentShow, errorInput } = this.state;
+        const { machineCount, componentShow, errorInput } = this.state;
         // Проверяем условие отображение компонента.
         if (!componentShow) return null;
         // Отрисовываем объект.
@@ -148,17 +148,17 @@ export default class UnitsCountSelector extends React.Component<IAppTransfer, nu
                         <Grid.Column textAlign='center' verticalAlign='middle'>
                             <Header as='h4' icon>
                                 <Icon name='numbered list' />
-                                {`Количество агрегатов для выполнения операции`}
+                                {`Количество рабочих машин входящих в агрегат`}
                                 <Header.Subheader>
-                                    {`Введите количество агрегатов для выполнения операции`}
+                                    {`Введите количество рабочих машин входящих в агрегат`}
                                 </Header.Subheader>
                             </Header>
                         </Grid.Column>
                         <Grid.Column textAlign='center' verticalAlign='middle'>
                             <Input
                                 error={errorInput}
-                                placeholder='Количество агрегатов'
-                                value={unitsCount}
+                                placeholder='Количество рабочих машин в агрегате'
+                                value={machineCount}
 
                                 onChange={this.handleChange}
                             />

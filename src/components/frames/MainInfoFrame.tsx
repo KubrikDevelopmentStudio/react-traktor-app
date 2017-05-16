@@ -6,7 +6,9 @@ import * as React from 'react';
 import {
     Segment,
     Table,
-    Icon
+    Icon,
+    Progress,
+    Button
 } from 'semantic-ui-react';
 /** Импорт главного класса приложения */
 import App from '../../classes/App';
@@ -41,7 +43,8 @@ export default class MainInfoFrame extends React.Component<IAppTransfer, null> {
     state: any;
     /** Главный класс приложения */
     app: App;
-
+    /** Переменная для подсчета прогресса ввода данных. */
+    compleatePercent: number = 0;
 
     /**
      * Создание строчек с информацией.
@@ -59,12 +62,16 @@ export default class MainInfoFrame extends React.Component<IAppTransfer, null> {
                 </Table.Row>
             );
         }
+        // Обнуляем главную переменную для подсчета.
+        this.compleatePercent = 0;
         // Переменная для индекса.
         let index: number = 1;
         // Если данные имеются, подгружаем их. 
         const nData: any = _.map(data, (d: any) => {
             // Завершен ли шаг.
             const compleate: boolean = !_.isUndefined(d.value) ? true : false;
+            // Подсчитываем количество введенных данных.
+            if (compleate) this.compleatePercent++;
             // Генерация компонента.
             return (
                 <Table.Row key={index} warning={!compleate} positive={compleate}>
@@ -98,6 +105,16 @@ export default class MainInfoFrame extends React.Component<IAppTransfer, null> {
         const data: any = this.app.getData();
         // Создаем объекты.
         const rows = this.createRows(data);
+        // Считаем проценты...
+        // Высчитываем количество шагов...
+        const dataLen: number = 10;
+        // Получаем делитель.
+        const determ: number = this.compleatePercent === 0 ? -1 : this.compleatePercent;
+        // Получаем проценты.
+        const percent: number = determ === -1 ? 0 : (determ/dataLen) * 100;
+        // Готовим экшн под таблицей.
+        const action: any = percent < 100 ? <Progress percent={percent} progress warning indicating/> : <Button content='жопа' />;
+        // Отрисовываем компонент.
         return (
             <Segment>
                 <Table celled structured fixed>
@@ -113,6 +130,7 @@ export default class MainInfoFrame extends React.Component<IAppTransfer, null> {
                         {rows}
                     </Table.Body>
                 </Table>
+                {action}
             </Segment>
         );
     }
