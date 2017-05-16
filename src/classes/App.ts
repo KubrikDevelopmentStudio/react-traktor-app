@@ -7,6 +7,7 @@ import {
     OperationType,
     CargoType,
     OperationTypeList,
+    CargoTypeList
 } from '../constants/constants';
 /** Максимальное количество операций. */
 
@@ -129,7 +130,7 @@ class App {
             },
             cargoType: {
                 caption: 'Груз для перевозки',
-                value: this.cargoType
+                value: !_.isUndefined(this.cargoType) ?  _.filter(CargoTypeList, type => type.value === this.cargoType)[0].text : undefined
             },
             unitsCount: {
                 caption: 'Количество агрегатов, шт.',

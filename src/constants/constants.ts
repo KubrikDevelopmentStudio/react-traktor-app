@@ -72,7 +72,7 @@ export const enum CargoType {
 
 /** Список возможных грузов для перевозки */
 export const CargoTypeList: any[] = [
-    {key: CargoType.Hay, value: CargoType.Senage, text: `Сено`},
+    {key: CargoType.Hay, value: CargoType.Hay, text: `Сено`},
     {key: CargoType.Senage, value: CargoType.Senage, text: `Сенаж`},
     {key: CargoType.Silage, value: CargoType.Silage, text: `Силос`},
     {key: CargoType.Corn, value: CargoType.Corn, text: `Зерно`},
