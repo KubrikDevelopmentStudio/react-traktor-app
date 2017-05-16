@@ -106,7 +106,7 @@ export default class MainInfoFrame extends React.Component<IAppTransfer, null> {
                             <Table.HeaderCell width={2} textAlign='center'>{`№`}</Table.HeaderCell>
                             <Table.HeaderCell textAlign='center'>{`Параметр`}</Table.HeaderCell>
                             <Table.HeaderCell textAlign='center'>{`Значение`}</Table.HeaderCell>
-                            <Table.HeaderCell width={2} textAlign='center'></Table.HeaderCell>
+                            <Table.HeaderCell width={2} textAlign='center'><Icon name='check square' size='large'></Icon></Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
                     <Table.Body>
