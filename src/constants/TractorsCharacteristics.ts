@@ -16,6 +16,7 @@ export let tractorsLibrary: any = _.stubObject();
 /** T-130M */
 /** По ГСМ информация отсутствовала, взял от трактора: Т-150К */
 export const t130m: ITraktor = {
+    model: 'T-130M',
     maintenance: {
         to1: 3.2,
         to2: 15.3,
@@ -55,6 +56,7 @@ export const t130m: ITraktor = {
 /** T-100M */
 /** По ГСМ информация отсутствовала, взял от трактора: Т-150К */
 export const t100m: ITraktor = {
+    model: 'T-100M',
     maintenance: {
         to1: 3.1,
         to2: 14.7,
@@ -94,6 +96,7 @@ export const t100m: ITraktor = {
 /** К-700А */
 /** По ГСМ информация отсутствовала, взял от трактора: К-701 */
 export const k700a: ITraktor = {
+    model: 'К-700А',
     maintenance: {
         to1: 2.5,
         to2: 14.7,
@@ -127,6 +130,7 @@ export const k700a: ITraktor = {
 
 /** К-701 */
 export const k701: ITraktor = {
+    model: 'К-701',
     maintenance: {
         to1: 2.2,
         to2: 11.6,
@@ -160,6 +164,7 @@ export const k701: ITraktor = {
 
 /** Т-4А */
 export const t4a: ITraktor = {
+    model: 'Т-4А',
     maintenance: {
         to1: 1.7,
         to2: 5.5,
@@ -201,6 +206,7 @@ export const t4a: ITraktor = {
 
 /** ДТ-75М */
 export const dt75m: ITraktor = {
+    model: 'ДТ-75М',
     maintenance: {
         to1: 2.7,
         to2: 6.4,
@@ -241,6 +247,7 @@ export const dt75m: ITraktor = {
 
 /** Т-150К */
 export const t150k: ITraktor = {
+    model: 'Т-150К',
     maintenance: {
         to1: 1.9,
         to2: 6.8,
@@ -279,6 +286,7 @@ export const t150k: ITraktor = {
 
 /** Т-70С */
 export const t70s: ITraktor = {
+    model: 'Т-70С',
     maintenance: {
         to1: 2.3,
         to2: 6.9,
@@ -318,6 +326,7 @@ export const t70s: ITraktor = {
 
 /** МТЗ-80 */
 export const mtz80: ITraktor = {
+    model: 'МТЗ-80',
     maintenance: {
         to1: 2.7,
         to2: 6.9,
@@ -357,6 +366,7 @@ export const mtz80: ITraktor = {
 
 /** МТЗ-82 */
 export const mtz82: ITraktor = {
+    model: 'МТЗ-82',
     maintenance: {
         to1: 2.7,
         to2: 6.9,
@@ -395,6 +405,7 @@ export const mtz82: ITraktor = {
 
 /** ЮМЗ-6Л */
 export const umz6l: ITraktor = {
+    model: 'ЮМЗ-6Л',
     maintenance: {
         to1: 2.5,
         to2: 7.3,
@@ -433,6 +444,7 @@ export const umz6l: ITraktor = {
 
 /** Т-40М */
 export const t40m: ITraktor = {
+    model: 'Т-40М',
     maintenance: {
         to1: 2.0,
         to2: 6.8,
@@ -473,6 +485,7 @@ export const t40m: ITraktor = {
 /** Т-40АМ */
 /** По ГСМ информация отсутствовала, взял от трактора: Т-40М */
 export const t40am: ITraktor = {
+    model: 'Т-40АМ',
     maintenance: {
         to1: 2.0,
         to2: 6.8,
@@ -512,6 +525,7 @@ export const t40am: ITraktor = {
 
 /** Т-25А */
 export const t25a: ITraktor = {
+    model: 'Т-25А',
     maintenance: {
         to1: 2.0,
         to2: 7.1,
@@ -553,6 +567,7 @@ export const t25a: ITraktor = {
 /** Т-25А1 */
 /** По ГСМ информация отсутствовала, взял от трактора: Т-25А */
 export const t25a1: ITraktor = {
+    model: 'Т-25А1',
     maintenance: {
         to1: 2.0,
         to2: 7.1,
@@ -593,6 +608,7 @@ export const t25a1: ITraktor = {
 
 /** Т-16 */
 export const t16: ITraktor = {
+    model: 'Т-16',
     maintenance: {
         to1: 0.9,
         to2: 2.7,
@@ -637,4 +653,4 @@ tractorsLibrary = { t130m, t100m, k700a, k701, t4a, dt75m, t150k, t70s, mtz80, m
 /** Список с тракторами для Select */
 export let TraktorsList = _.stubArray();
 /** Получаем названия всех тракторов */
-_.forEach(tractorsLibrary, (value, traktorCaption) => TraktorsList.push({key: traktorCaption, value: traktorCaption, text: traktorCaption.toUpperCase()}))
+_.forEach(tractorsLibrary, (value, traktorCaption) => TraktorsList.push({key: traktorCaption, value: traktorCaption, text: value.model}))
