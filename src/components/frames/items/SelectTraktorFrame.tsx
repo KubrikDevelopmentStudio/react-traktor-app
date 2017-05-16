@@ -96,11 +96,12 @@ export default class OperationCountFrame extends React.Component<IAppTransfer, n
                             </Header>
                         </Grid.Column>
                         <Grid.Column textAlign='center' verticalAlign='middle'>
-                            <Dropdown placeholder='Выберите тип проводимой операции'
+                            <Dropdown placeholder='Выберите трактор'
+                                upward
                                 fluid
                                 search
                                 selection
-                                noResultsMessage={`Искомый тип работ не найден!`}
+                                noResultsMessage={`Искомый трактор не найден!`}
                                 options={TraktorsList}
                                 defaultValue={selectedTraktor}
                                 onChange={this.handleChange}

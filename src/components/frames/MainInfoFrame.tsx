@@ -52,9 +52,9 @@ export default class MainInfoFrame extends React.Component<IAppTransfer, null> {
         // если пустые данные пришли.
         if (_.isUndefined(data) || _.isEmpty(data)) {
             return (
-                <Table.Row warning textAlign='center' >
+                <Table.Row key={1} warning textAlign='center' >
                     <Table.Cell colSpan={2}>
-                        Данные отсутствуют!
+                        {`Данные отсутствуют!`}
                     </Table.Cell>
                 </Table.Row>
             );
@@ -67,7 +67,7 @@ export default class MainInfoFrame extends React.Component<IAppTransfer, null> {
             const compleate: boolean = !_.isUndefined(d.value) ? true : false;
             // Генерация компонента.
             return (
-                <Table.Row warning={!compleate} positive={compleate}>
+                <Table.Row key={index} warning={!compleate} positive={compleate}>
                     <Table.Cell textAlign='center'>{index++}</Table.Cell>
                     <Table.Cell>{d.caption}</Table.Cell>
                     <Table.Cell>{compleate ? d.value : 'Ожидание ввода данных...'}</Table.Cell>
