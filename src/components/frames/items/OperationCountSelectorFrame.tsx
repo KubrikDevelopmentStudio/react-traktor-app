@@ -19,7 +19,8 @@ import {
 /** Импорт количества возможных операций */
 import {
     operationCount
-} from '../../../constants/constants'
+} from '../../../constants/constants';
+import '../../../constants/styles.css';
 
 
 /**
@@ -83,7 +84,7 @@ export default class OperationCountFrame extends React.Component<IAppTransfer, n
         if (!componentShow) return null;
         // Отрисовываем объект.
         return (
-            <Segment>
+            <Segment className='zopa'>
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>

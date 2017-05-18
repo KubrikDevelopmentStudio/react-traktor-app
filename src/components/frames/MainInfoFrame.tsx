@@ -78,7 +78,7 @@ export default class MainInfoFrame extends React.Component<IAppTransfer, null> {
                     <Table.Cell textAlign='center'>{index++}</Table.Cell>
                     <Table.Cell>{d.caption}</Table.Cell>
                     <Table.Cell>{compleate ? d.value : 'Ожидание ввода данных...'}</Table.Cell>
-                    <Table.Cell textAlign='center'>{compleate ? <Icon name='checkmark' size='large'/> : <Icon loading name='spinner' size='large'/>}</Table.Cell>
+                    <Table.Cell textAlign='center'>{compleate ? <Icon name='checkmark' size='large' /> : <Icon loading name='spinner' size='large' />}</Table.Cell>
                 </Table.Row>);
         });
         // Возвращаем данные.
@@ -111,9 +111,16 @@ export default class MainInfoFrame extends React.Component<IAppTransfer, null> {
         // Получаем делитель.
         const determ: number = this.compleatePercent === 0 ? -1 : this.compleatePercent;
         // Получаем проценты.
-        const percent: number = determ === -1 ? 0 : (determ/dataLen) * 100;
+        const percent: number = determ === -1 ? 0 : (determ / dataLen) * 100;
         // Готовим экшн под таблицей.
-        const action: any = percent < 100 ? <Progress percent={percent} progress warning indicating/> : <Button content='жопа' />;
+        let action: any = null;
+        if (percent < 100) {
+            action = <Progress percent={percent} progress warning indicating>
+                {`Заполнение необходимыми данными`}
+            </Progress>;
+        } else {
+            action = <Button fluid positive content='Подсчитать затраты' />;
+        }
         // Отрисовываем компонент.
         return (
             <Segment>

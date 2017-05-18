@@ -18,7 +18,8 @@ import {
 } from '../../../interfaces/AppInterfaces';
 import {
     IErrorLabel
-} from '../../../interfaces/AppInterfaces'
+} from '../../../interfaces/AppInterfaces';
+import '../../../constants/styles.css';
 
 
 /**
@@ -142,7 +143,7 @@ export default class FieladArea extends React.Component<IAppTransfer, null> {
         if (!componentShow) return null;
         // Отрисовываем объект.
         return (
-            <Segment>
+            <Segment className='zopa'>
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>

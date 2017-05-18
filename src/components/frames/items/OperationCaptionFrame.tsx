@@ -141,7 +141,7 @@ export default class OperationCaption extends React.Component<IAppTransfer, null
         if (!componentShow) return null;
         // Отрисовываем объект.
         return (
-            <Segment>
+            <Segment style={{width: 620, height: 130}}>
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>

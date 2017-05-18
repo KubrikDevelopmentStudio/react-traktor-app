@@ -142,7 +142,7 @@ export default class UnitsCountSelector extends React.Component<IAppTransfer, nu
         if (!componentShow) return null;
         // Отрисовываем объект.
         return (
-            <Segment>
+            <Segment style={{width: 620, height: 150}}>
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>

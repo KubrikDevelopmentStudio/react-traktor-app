@@ -61,36 +61,46 @@ export default class MainFrame extends React.Component<IAppTransfer, null> {
         // Отрисовываем объект.
         return (
             <Form>
-                <Form.Field>
-                    <OperationCountFrame componentShow={true} app={this.app} />
-                </Form.Field>
-                <Form.Field>
-                    <FieldArea componentShow={appLevel >= 1} app={this.app} />
-                </Form.Field>
-                <Form.Field>
-                    <OperationType componentShow={appLevel >= 2} app={this.app} />
-                </Form.Field>
-                <Form.Field>
-                    <OperationCaption componentShow={appLevel >= 3} app={this.app} />
-                </Form.Field>
-                <Form.Field>
-                    <SelectTraktor componentShow={appLevel >= 4} app={this.app} />
-                </Form.Field>
-                <Form.Field>
-                    <SelectMachine componentShow={appLevel >= 5} app={this.app} />
-                </Form.Field>
-                <Form.Field>
-                    <SelectCargoType componentShow={appLevel >= 6} app={this.app} />
-                </Form.Field>
-                <Form.Field>
-                    <UnitsCountSelector componentShow={appLevel >= 7} app={this.app} />
-                </Form.Field>
-                <Form.Field>
-                    <MachineCount componentShow={appLevel >= 8} app={this.app} />
-                </Form.Field>
-                <Form.Field>
-                    <WorkersCount componentShow={appLevel >= 9} app={this.app} />
-                </Form.Field>
+                <Form.Group>
+                    <Form.Field>
+                        <OperationCountFrame componentShow={true} app={this.app} />
+                    </Form.Field>
+                    <Form.Field>
+                        <FieldArea componentShow={appLevel >= 1} app={this.app} />
+                    </Form.Field>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Field>
+                        <OperationType componentShow={appLevel >= 2} app={this.app} />
+                    </Form.Field>
+                    <Form.Field>
+                        <OperationCaption componentShow={appLevel >= 3} app={this.app} />
+                    </Form.Field>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Field>
+                        <SelectTraktor componentShow={appLevel >= 4} app={this.app} />
+                    </Form.Field>
+                    <Form.Field>
+                        <SelectMachine componentShow={appLevel >= 5} app={this.app} />
+                    </Form.Field>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Field>
+                        <SelectCargoType componentShow={appLevel >= 6} app={this.app} />
+                    </Form.Field>
+                    <Form.Field>
+                        <UnitsCountSelector componentShow={appLevel >= 7} app={this.app} />
+                    </Form.Field>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Field>
+                        <MachineCount componentShow={appLevel >= 8} app={this.app} />
+                    </Form.Field>
+                    <Form.Field>
+                        <WorkersCount componentShow={appLevel >= 9} app={this.app} />
+                    </Form.Field>
+                </Form.Group>
             </Form>
         );
     }
