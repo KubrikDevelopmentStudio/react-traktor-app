@@ -143,7 +143,7 @@ export default class FieladArea extends React.Component<IAppTransfer, null> {
         if (!componentShow) return null;
         // Отрисовываем объект.
         return (
-            <Segment className='zopa'>
+            <Segment className='main-blocks main-blocks-first-line'>
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>

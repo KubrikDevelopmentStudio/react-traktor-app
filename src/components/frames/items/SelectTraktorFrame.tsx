@@ -83,7 +83,7 @@ export default class SelectTraktorFrame extends React.Component<IAppTransfer, nu
         if (!componentShow) return null;
         // Отрисовываем объект.
         return (
-            <Segment style={{width: 620, height: 130}}>
+            <Segment className="main-blocks main-blocks-first-line">
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>

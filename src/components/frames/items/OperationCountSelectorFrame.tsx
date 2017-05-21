@@ -84,7 +84,7 @@ export default class OperationCountFrame extends React.Component<IAppTransfer, n
         if (!componentShow) return null;
         // Отрисовываем объект.
         return (
-            <Segment className='zopa'>
+            <Segment className='main-blocks main-blocks-first-line'>
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>

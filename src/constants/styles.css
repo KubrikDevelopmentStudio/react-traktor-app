@@ -1,8 +1,9 @@
-.zopa {
-    width: 100%;
-    min-width: 500px;
-    height: 100%;
+.main-blocks {
+    /*min-width: 100%;*/
     min-height: 130px;
-    display: inline-block;
-    line-height: normal;
-};
+    height: 100% !important;
+}
+
+.main-blocks-first-line {
+    width: 450px;
+}
