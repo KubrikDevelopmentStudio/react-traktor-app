@@ -60,7 +60,7 @@ export default class MainWindow extends React.Component<{}, null> {
                 </Grid.Row>
                 {/*Создаем строку в сетке и выравниваем ее по центру*/}
                 <Grid.Row columns={4}>
-                    <Grid.Column width={6} verticalAlign='bottom'>
+                    <Grid.Column width={6} verticalAlign='middle'>
                         {/*Компонент с общей информацией*/}
                         <MainInfoFrame componentShow={true} app={this.app}></MainInfoFrame>
                     </Grid.Column>
