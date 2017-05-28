@@ -1,3 +1,5 @@
+import { MachinesList } from './../constants/MachinesCharacteristics';
+
 import * as _ from 'lodash';
 /** Импортируем интерфейс трактора */
 import ITraktor from '../interfaces/TractorsInterface';
@@ -9,6 +11,8 @@ import {
     OperationTypeList,
     CargoTypeList
 } from '../constants/constants';
+
+
 /** Максимальное количество операций. */
 
 
@@ -95,6 +99,10 @@ class App {
     /** Сколько рабочих (кроме тракториста) обслуживают агрегат. */
     private workersCount: number;
 
+    getMachinesList() {
+        const tmp = _.filter(MachinesList, machine => _.includes(machine.operattionType, this.workType))
+        return _.map(tmp, (machine: any, index: number) => ({key: index, value: machine.model, text: machine.model}))
+    }
 
     /** Геттер уровня приложения */
     getAppLevel() {
@@ -114,7 +122,7 @@ class App {
             },
             workType: {
                 caption: 'Тип проводимых работ',
-                value: !_.isUndefined(this.workType) ?  _.filter(OperationTypeList, type => type.value === this.workType)[0].text : undefined
+                value: !_.isUndefined(this.workType) ? _.filter(OperationTypeList, type => type.value === this.workType)[0].text : undefined
             },
             operationCaption: {
                 caption: 'Название операции',
@@ -130,7 +138,7 @@ class App {
             },
             cargoType: {
                 caption: 'Груз для перевозки',
-                value: !_.isUndefined(this.cargoType) ?  _.filter(CargoTypeList, type => type.value === this.cargoType)[0].text : undefined
+                value: !_.isUndefined(this.cargoType) ? _.filter(CargoTypeList, type => type.value === this.cargoType)[0].text : undefined
             },
             unitsCount: {
                 caption: 'Количество агрегатов, шт.',
@@ -142,7 +150,7 @@ class App {
             },
             workersCount: {
                 caption: 'Обслуживающий персонал, чел.',
-                value:this.workersCount
+                value: this.workersCount
             }
         };
     }
@@ -153,7 +161,7 @@ class App {
 
         this.callback(`setLevel`);
     }
-    
+
 
     /** Сеттер количества операций */
     setOperationCount(count: number) {

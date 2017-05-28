@@ -182,3 +182,6 @@ export const rks4: IMachine = {
         OperationType.CleaningPotatoes,
     ]
 };
+
+/** Список всех машин */
+export const MachinesList = [pln535, kps4, rvk36, ldg10a, bdt7, bso4a, kon28pm, ycmk54, kf54, cz36, czl36, ch4b, kst14, bm4, rks4];

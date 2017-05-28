@@ -12,7 +12,7 @@ interface IMachine {
     hourOfProdaction: number,
     // Стоимость загрузки.
     loadCoast: number,
-    // Тип машины (для чего предназначена)
+    // Тип машины (для чего предназначена)\
     operattionType: OperationType[]
 }
 

@@ -17,9 +17,7 @@ import {
     IAppTransfer,
 } from '../../../interfaces/AppInterfaces';
 /** Импорт количества возможных операций */
-import {
-    MachineList
-} from '../../../constants/constants'
+
 
 
 /**
@@ -37,7 +35,8 @@ export default class SelectMachine extends React.Component<IAppTransfer, null> {
             // Отображение компонента по-умолчанию.
             componentShow: props.componentShow,
             // Выбранное количество операций.
-            selectedMachine: _.stubString()
+            selectedMachine: _.stubString(),
+            machinesList: _.stubArray()
         };
         // Получаем главный класс приложения.
         this.app = props.app;
@@ -69,6 +68,7 @@ export default class SelectMachine extends React.Component<IAppTransfer, null> {
         const { componentShow } = newProp;
         // Применяем новое значение.
         this.setState({ componentShow });
+        this.setState({machinesList: this.app.getMachinesList()})
     }
 
 
@@ -77,7 +77,7 @@ export default class SelectMachine extends React.Component<IAppTransfer, null> {
      */
     render() {
         // Получаем необходимые свойства.
-        const { componentShow, selectedMachine } = this.state;
+        const { componentShow, selectedMachine, machinesList } = this.state;
         // Проверяем условие отображение компонента.
         if (!componentShow) return null;
         // Отрисовываем объект.
@@ -100,7 +100,7 @@ export default class SelectMachine extends React.Component<IAppTransfer, null> {
                                 search
                                 selection
                                 noResultsMessage={`Искомая машина не найдена!`}
-                                options={MachineList}
+                                options={machinesList}
                                 defaultValue={selectedMachine}
                                 onChange={this.handleChange}
                             />
