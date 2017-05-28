@@ -27,7 +27,7 @@ export default class HeaderFrame extends React.Component<{}, null> {
         return (
             <Header as='h2' icon>
                 <Icon name='calculator' />
-                {`Тут что-то интересное`}
+                {`Расчет затрат`}
                 <Header.Subheader>
                     {`Расчет приведенных затрат для предлагаемого варианта полевых механизированных работ`}
                 </Header.Subheader>

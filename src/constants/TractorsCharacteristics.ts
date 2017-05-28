@@ -4,7 +4,7 @@
 
 
 /** Интерфейс, описывающий структуру объекта Трактор */
-import ITraktor from '../interfaces/TractorsInterface'
+import ITraktor from '../interfaces/TractorsInterface';
 /** Вспомогательная библиотека для работы с данными */
 import * as _ from 'lodash';
 
