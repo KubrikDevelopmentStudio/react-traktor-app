@@ -69,6 +69,10 @@ export default class OperationType extends React.Component<IAppTransfer, null> {
         const { componentShow } = newProp;
         // Применяем новое значение.
         this.setState({ componentShow });
+        // Проверка на уже введенные данные ранее.
+        if ((this.state.componentShow === false && componentShow) && this.state.selectedWorktype.toString().length > 0) {
+            this.app.setWorkType(parseInt(this.state.selectedWorktype))
+        }
     }
 
 

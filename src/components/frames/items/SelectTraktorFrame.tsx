@@ -56,7 +56,7 @@ export default class SelectTraktorFrame extends React.Component<IAppTransfer, nu
      */
     handleChange = (event: any, { value }: any) => {
         // Установка нового значения.
-        this.setState({ selectedValue: value });
+        this.setState({ selectedTraktor: value });
         // Установка значения в главном классе приложения.
         this.app.setSelectTraktor(tractorsLibrary[value]);
     }
@@ -70,6 +70,10 @@ export default class SelectTraktorFrame extends React.Component<IAppTransfer, nu
         const { componentShow } = newProp;
         // Применяем новое значение.
         this.setState({ componentShow });
+        // Проверка на уже введенные данные ранее.
+        if ((this.state.componentShow === false && componentShow) && this.state.selectedTraktor.length > 0) {
+            this.app.setSelectTraktor(tractorsLibrary[this.state.selectedValue])
+        }
     }
 
 

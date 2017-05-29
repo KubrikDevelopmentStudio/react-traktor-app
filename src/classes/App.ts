@@ -43,7 +43,11 @@ class App {
                 if (this.level < 2) this.level = 2;
                 break;
             case 'workType':
-                if (this.level < 3) this.level = 3;
+                if (this.level < 3) this.level = 3 
+                else if (this.level > 5) {
+                    this.level = 5;
+                    this.selectedMachine = _.stubString();
+                }
                 break;
             case 'operationCaption':
                 if (this.level < 4) this.level = 4;
@@ -100,8 +104,8 @@ class App {
     private workersCount: number;
 
     getMachinesList() {
-        const tmp = _.filter(MachinesList, machine => _.includes(machine.operattionType, this.workType))
-        return _.map(tmp, (machine: any, index: number) => ({key: index, value: machine.model, text: machine.model}))
+        const tmp = _.filter(MachinesList, machine => _.includes(machine.operationType, this.workType))
+        return _.map(tmp, (machine: any, index: number) => ({key: machine.modelId, value: machine.model, text: machine.model}))
     }
 
     /** Геттер уровня приложения */

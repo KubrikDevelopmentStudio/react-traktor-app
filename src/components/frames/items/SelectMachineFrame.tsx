@@ -54,7 +54,7 @@ export default class SelectMachine extends React.Component<IAppTransfer, null> {
      */
     handleChange = (event: any, { value }: any) => {
         // Установка нового значения.
-        this.setState({ selectedValue: value });
+        this.setState({ selectedMachine: value });
         // Установка значения в главном классе приложения.
         this.app.setSelectMachine(value);
     }
@@ -68,7 +68,15 @@ export default class SelectMachine extends React.Component<IAppTransfer, null> {
         const { componentShow } = newProp;
         // Применяем новое значение.
         this.setState({ componentShow });
-        this.setState({machinesList: this.app.getMachinesList()})
+        // Получаем список машин, согласно выбранному типу проводимых работ.
+        this.setState({
+            machinesList: this.app.getMachinesList(),
+            selectedMachine: _.stubString()
+        })
+        // Проверка на уже введенные данные ранее.
+        if ((this.state.componentShow === false && componentShow) && this.state.selectedMachine.length > 0) {
+            this.app.setSelectMachine(this.state.selectedMachine)
+        }
     }
 
 

@@ -67,9 +67,9 @@ export default class MainInfoFrame extends React.Component<IAppTransfer, null> {
         // Переменная для индекса.
         let index: number = 1;
         // Если данные имеются, подгружаем их. 
-        const nData: any = _.map(data, (d: any) => {
+        const nData: any = _.map(data, (d: any) => {       
             // Завершен ли шаг.
-            const compleate: boolean = !_.isUndefined(d.value) ? true : false;
+            const compleate: boolean = !_.isUndefined(d.value) && d.value.toString().length > 0 ? true : false;
             // Подсчитываем количество введенных данных.
             if (compleate) this.compleatePercent++;
             // Генерация компонента.

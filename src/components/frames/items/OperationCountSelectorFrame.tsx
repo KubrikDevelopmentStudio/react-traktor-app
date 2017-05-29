@@ -70,6 +70,10 @@ export default class OperationCountFrame extends React.Component<IAppTransfer, n
         const { componentShow } = newProp;
         // Применяем новое значение.
         this.setState({ componentShow });
+        // Проверка на уже введенные данные ранее.
+        if ((this.state.componentShow === false && componentShow) && this.state.selectedValue.toString().length > 0) {
+            this.app.setOperationCount(parseInt(this.state.selectedValue))
+        }
     }
 
 

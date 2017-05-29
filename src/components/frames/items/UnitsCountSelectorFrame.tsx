@@ -128,6 +128,10 @@ export default class UnitsCountSelector extends React.Component<IAppTransfer, nu
         const { componentShow } = newProp;
         // Применяем новое значение.
         this.setState({ componentShow });
+        // Проверка на уже введенные данные ранее.
+        if ((this.state.componentShow === false && componentShow) && this.state.unitsCount.toString().length > 0) {
+            this.app.setUnitsCount(parseInt(this.state.unitsCount))
+        }
     }
 
     

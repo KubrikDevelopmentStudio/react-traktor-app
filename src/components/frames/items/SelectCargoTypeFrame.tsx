@@ -69,6 +69,10 @@ export default class SelectCargoType extends React.Component<IAppTransfer, null>
         const { componentShow } = newProp;
         // Применяем новое значение.
         this.setState({ componentShow });
+        // Проверка на уже внесенные данные ранее.
+        if ((this.state.componentShow === false && componentShow) && this.state.selectedCargoType.toString().length > 0) {
+            this.app.setCargoType(parseInt(this.state.selectedCargoType))
+        }
     }
 
 

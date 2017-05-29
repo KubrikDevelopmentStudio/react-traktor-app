@@ -129,9 +129,13 @@ export default class FieladArea extends React.Component<IAppTransfer, null> {
         const { componentShow } = newProp;
         // Применяем новое значение.
         this.setState({ componentShow });
+        // Проверка на уже введенные данные ранее.
+        if ((this.state.componentShow === false && componentShow) && this.state.areaValue.toString().length > 0) {
+            this.app.setFieldArea(parseInt(this.state.areaValue))
+        }
     }
 
-    
+
     /**
      * Рендер компонента.
      */

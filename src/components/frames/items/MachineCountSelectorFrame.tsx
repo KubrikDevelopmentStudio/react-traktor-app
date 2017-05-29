@@ -128,9 +128,13 @@ export default class MachineCount extends React.Component<IAppTransfer, null> {
         const { componentShow } = newProp;
         // Применяем новое значение.
         this.setState({ componentShow });
+        // Проверка на уже введенные данные ранее.
+        if ((this.state.componentShow === false && componentShow) && this.state.machineCount.toString().length > 0) {
+            this.app.setMachineCount(parseInt(this.state.machineCount))
+        }
     }
 
-    
+
     /**
      * Рендер компонента.
      */

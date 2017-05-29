@@ -51,6 +51,7 @@ class ErrorLabel extends React.Component<IErrorLabel, null> {
     componentWillReceiveProps(newProps: any) {
         // Получем информацию об ошибке.
         this.setState({ errorInput: newProps.errorInput });
+        
     }
 
 
@@ -107,7 +108,7 @@ export default class OperationCaption extends React.Component<IAppTransfer, null
         // Смотрим, что мы не стерли данные в процессе.
         if (value.length >= MIN_OPERATION_CAPTION_SIZE) {
             // Убираем сообщение об ошибке.
-            this.setState({ errorInput: false });
+            this.setState({ errorInput: false, operCaption: value });
             // Устанавливаем следующий уровень приложения.
             this.app.setOperationCaption(value);
         } else {
@@ -127,6 +128,10 @@ export default class OperationCaption extends React.Component<IAppTransfer, null
         const { componentShow } = newProp;
         // Применяем новое значение.
         this.setState({ componentShow });
+        // Проверка на уже введенные данные ранее.
+        if ((this.state.componentShow === false && componentShow) && this.state.operCaption.length > 0) {
+            this.app.setOperationCaption(this.state.operCaption)
+        }
     }
 
 

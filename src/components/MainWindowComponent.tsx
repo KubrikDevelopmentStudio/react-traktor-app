@@ -29,8 +29,8 @@ export default class MainWindow extends React.Component<{}, null> {
      * Коллбэк функция.
      */
     callback = (cbParam: string) => {
-        console.info(`Сработал callback с параметром: ${cbParam}!`);
-        console.info(`Содержимое класса App: `, this.app);
+        // console.info(`Сработал callback с параметром: ${cbParam}!`);
+        // console.info(`Содержимое класса App: `, this.app);
 
         this.forceUpdate();
     }

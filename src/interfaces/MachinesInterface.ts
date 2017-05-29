@@ -4,6 +4,8 @@ import {
 
 /** Интерфейс, описывающий машины */
 interface IMachine {
+    // Ключ модели для индекса.
+    modelId: string,
     // Название модели машины.
     model: string,
     // Стоимость.
@@ -13,7 +15,7 @@ interface IMachine {
     // Стоимость загрузки.
     loadCoast: number,
     // Тип машины (для чего предназначена)\
-    operattionType: OperationType[]
+    operationType: OperationType[]
 }
 
 export default IMachine;
