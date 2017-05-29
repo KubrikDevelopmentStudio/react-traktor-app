@@ -114,6 +114,8 @@ export default class OperationCaption extends React.Component<IAppTransfer, null
         } else {
             // Выводим сообщение о минимальной длине ввода в три символа.
             this.setState({ errorInput: true });
+            // Сбрасываем введенное название операции.
+            this.app.setOperationCaption(_.stubString());
             // Возвращаемся на текущий уровень.
             this.app.setAppLevel(3);
         }
