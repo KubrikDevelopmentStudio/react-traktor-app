@@ -13,9 +13,6 @@ import {
 } from '../constants/constants';
 
 
-/** Максимальное количество операций. */
-
-
 /**
  * Основной класс с логикой приложения.
  */
@@ -99,8 +96,11 @@ class App {
     /** Сколько рабочих (кроме тракториста) обслуживают агрегат. */
     private workersCount: number;
 
+    /** Получаем список машин, в зависимости от выбранной технологичской операции */
     getMachinesList() {
+        // Сортируем объекты по необъодимому типу операций.
         const tmp = _.filter(MachinesList, machine => _.includes(machine.operationType, this.workType))
+        // Создаем массив необходимого вида, для отображения в объекте выбора.
         return _.map(tmp, (machine: any, index: number) => ({key: machine.modelId, value: machine.model, text: machine.model}))
     }
 
