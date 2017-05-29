@@ -16,6 +16,11 @@ export const pln535: IMachine = {
     operationType: [
         OperationType.ContinuousCultivation,
         OperationType.InterrowCultivation
+    ],
+    coefficientOfDeductions: [
+        0.125,
+        0,
+        0.2
     ]
 };
 
@@ -28,6 +33,11 @@ export const kps4: IMachine = {
     operationType: [
         OperationType.ContinuousCultivation,
         OperationType.InterrowCultivation
+    ],
+    coefficientOfDeductions: [
+        0.142,
+        0,
+        0.14
     ]
 };
 
@@ -40,6 +50,11 @@ export const rvk36: IMachine = {
     operationType: [
         OperationType.ContinuousCultivation,
         OperationType.InterrowCultivation
+    ],
+    coefficientOfDeductions: [
+        0.142,
+        0,
+        0.14
     ]
 };
 
@@ -52,6 +67,11 @@ export const ldg10a: IMachine = {
     operationType: [
         OperationType.ContinuousCultivation,
         OperationType.InterrowCultivation
+    ],
+    coefficientOfDeductions: [
+        0.142,
+        0,
+        0.14
     ]
 };
 
@@ -64,6 +84,11 @@ export const bdt7: IMachine = {
     operationType: [
         OperationType.ContinuousCultivation,
         OperationType.InterrowCultivation
+    ],
+    coefficientOfDeductions: [
+        0.142,
+        0,
+        0.14
     ]
 };
 
@@ -76,6 +101,11 @@ export const bso4a: IMachine = {
     operationType: [
         OperationType.ContinuousCultivation,
         OperationType.InterrowCultivation
+    ],
+    coefficientOfDeductions: [
+        0.166,
+        0,
+        0.2
     ]
 };
 
@@ -91,6 +121,11 @@ export const kon28pm: IMachine = {
     loadCoast: 280,
     operationType: [
         OperationType.InterrowCultivation
+    ],
+    coefficientOfDeductions: [
+        0.166,
+        0,
+        0.2
     ]
 };
 
@@ -102,6 +137,11 @@ export const kno28: IMachine = {
     loadCoast: 280,
     operationType: [
         OperationType.InterrowCultivation
+    ],
+    coefficientOfDeductions: [
+        0.166,
+        0,
+        0.2
     ]
 };
 
@@ -113,6 +153,11 @@ export const ycmk54: IMachine = {
     loadCoast: 350,
     operationType: [
         OperationType.InterrowCultivation
+    ],
+    coefficientOfDeductions: [
+        0.166,
+        0,
+        0.2
     ]
 };
 
@@ -124,12 +169,17 @@ export const kf54: IMachine = {
     loadCoast: 280,
     operationType: [
         OperationType.InterrowCultivation
+    ],
+    coefficientOfDeductions: [
+        0.166,
+        0,
+        0.2
     ]
 };
 
 
 /** Машины для посева и посадки */
-
+// Зерно, картофель
 export const cz36: IMachine = {
     modelId: "cz36",
     model: 'СЗ-3.6',
@@ -138,6 +188,11 @@ export const cz36: IMachine = {
     loadCoast: 160,
     operationType: [
         OperationType.Planting
+    ],
+    coefficientOfDeductions: [
+        0.125,
+        0,
+        0.07
     ]
 };
 
@@ -149,6 +204,11 @@ export const czl36: IMachine = {
     loadCoast: 160,
     operationType: [
         OperationType.Planting
+    ],
+    coefficientOfDeductions: [
+        0.125,
+        0,
+        0.07
     ]
 };
 
@@ -160,6 +220,11 @@ export const ch4b: IMachine = {
     loadCoast: 140,
     operationType: [
         OperationType.Planting
+    ],
+    coefficientOfDeductions: [
+        0.142,
+        0,
+        0.14
     ]
 };
 
@@ -174,6 +239,11 @@ export const kst14: IMachine = {
     loadCoast: 200,
     operationType: [
         OperationType.CleaningPotatoes,
+    ],
+    coefficientOfDeductions: [
+        0.166,
+        0,
+        0.15
     ]
 };
 
@@ -185,6 +255,11 @@ export const bm4: IMachine = {
     loadCoast: 300,
     operationType: [
         OperationType.CleaningPotatoes,
+    ],
+    coefficientOfDeductions: [
+        0.142,
+        0,
+        0.12
     ]
 };
 
@@ -196,6 +271,11 @@ export const rks4: IMachine = {
     loadCoast: 300,
     operationType: [
         OperationType.CleaningPotatoes,
+    ],
+    coefficientOfDeductions: [
+        0.142,
+        0,
+        0.12
     ]
 };
 
