@@ -115,6 +115,8 @@ export default class FieladArea extends React.Component<IAppTransfer, null> {
             // Устанавливаем следующий уровень приложения.
             this.app.setFieldArea(parseInt(value));
         } else {
+            // Обнуляем значение в инфо таблице.
+            this.app.setFieldArea(-1)
             // Возвращаемся на текущий уровень.
             this.app.setAppLevel(1);
         }

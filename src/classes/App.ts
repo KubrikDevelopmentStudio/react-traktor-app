@@ -40,14 +40,10 @@ class App {
                 if (this.level < 1) this.level = 1;
                 break;
             case 'fieldArea':
-                if (this.level < 2) this.level = 2;
+                if (this.level < 2) this.level = 2
                 break;
             case 'workType':
                 if (this.level < 3) this.level = 3 
-                else if (this.level > 5) {
-                    this.level = 5;
-                    this.selectedMachine = _.stubString();
-                }
                 break;
             case 'operationCaption':
                 if (this.level < 4) this.level = 4;

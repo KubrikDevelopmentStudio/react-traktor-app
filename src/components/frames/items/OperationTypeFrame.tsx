@@ -7,7 +7,7 @@ import {
     Grid,
     Dropdown,
     Segment,
-    Header, 
+    Header,
     Icon
 } from 'semantic-ui-react';
 /** Класс управления логикой приложения */
@@ -58,6 +58,11 @@ export default class OperationType extends React.Component<IAppTransfer, null> {
         this.setState({ selectedWorktype: value })
         // Обновления ифнормации в классе.
         this.app.setWorkType(parseInt(value));
+
+        if (this.app.getAppLevel() > 5) {
+            this.app.setSelectMachine(_.stubString());
+            this.app.setAppLevel(5);
+        }
     }
 
 
@@ -91,7 +96,7 @@ export default class OperationType extends React.Component<IAppTransfer, null> {
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column textAlign='center' verticalAlign='middle'>
-                             <Header as='h4' icon>
+                            <Header as='h4' icon>
                                 <Icon name='legal' />
                                 {`Проводимые работы`}
                                 <Header.Subheader>
