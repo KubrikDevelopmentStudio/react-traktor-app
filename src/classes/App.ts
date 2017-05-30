@@ -1,5 +1,4 @@
-import { MachinesList } from './../constants/MachinesCharacteristics';
-
+/** Импортируем вспомогательную библиотеку для обработки данных */
 import * as _ from 'lodash';
 /** Импортируем интерфейс трактора */
 import ITraktor from '../interfaces/TractorsInterface';
@@ -11,6 +10,9 @@ import {
     OperationTypeList,
     CargoTypeList
 } from '../constants/constants';
+/** Импортируем список машин */
+import { MachinesList } from './../constants/MachinesCharacteristics';
+
 
 
 /**
@@ -98,7 +100,7 @@ class App {
 
     /** Получаем список машин, в зависимости от выбранной технологичской операции */
     getMachinesList() {
-        // Сортируем объекты по необъодимому типу операций.
+        // Сортируем объекты по необъходимому типу операций.
         const tmp = _.filter(MachinesList, machine => _.includes(machine.operationType, this.workType))
         // Создаем массив необходимого вида, для отображения в объекте выбора.
         return _.map(tmp, (machine: any, index: number) => ({key: machine.modelId, value: machine.model, text: machine.model}))
