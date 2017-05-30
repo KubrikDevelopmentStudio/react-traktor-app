@@ -124,7 +124,7 @@ export default class MainInfoFrame extends React.Component<IAppTransfer, null> {
         // Отрисовываем компонент.
         return (
             <Segment>
-                <Table celled structured fixed>
+                <Table celled structured fixed compact='very'>
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell width={2} textAlign='center'>{`№`}</Table.HeaderCell>

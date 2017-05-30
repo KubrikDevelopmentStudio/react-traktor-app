@@ -71,7 +71,6 @@ export default class SelectMachine extends React.Component<IAppTransfer, null> {
         // Получаем список машин, согласно выбранному типу проводимых работ.
         this.setState({
             machinesList: this.app.getMachinesList(),
-            selectedMachine: _.stubString()
         })
         // Проверка на уже введенные данные ранее.
         if ((this.state.componentShow === false && componentShow) && this.state.selectedMachine.length > 0) {

@@ -114,6 +114,8 @@ export default class WorkersCount extends React.Component<IAppTransfer, null> {
             // Устанавливаем следующий уровень приложения.
             this.app.setWorkersCount(parseInt(value));
         } else {
+            // Обнуляем значение в инфо таблице.
+            this.app.setWorkersCount(-1);
             // Возвращаемся на текущий уровень.
             this.app.setAppLevel(9);
         }

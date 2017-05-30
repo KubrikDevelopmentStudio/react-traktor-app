@@ -72,7 +72,7 @@ export default class SelectTraktorFrame extends React.Component<IAppTransfer, nu
         this.setState({ componentShow });
         // Проверка на уже введенные данные ранее.
         if ((this.state.componentShow === false && componentShow) && this.state.selectedTraktor.length > 0) {
-            this.app.setSelectTraktor(tractorsLibrary[this.state.selectedValue])
+            this.app.setSelectTraktor(tractorsLibrary[this.state.selectedTraktor])
         }
     }
 

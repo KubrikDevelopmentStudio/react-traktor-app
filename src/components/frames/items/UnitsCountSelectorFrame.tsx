@@ -114,6 +114,8 @@ export default class UnitsCountSelector extends React.Component<IAppTransfer, nu
             // Устанавливаем следующий уровень приложения.
             this.app.setUnitsCount(parseInt(value));
         } else {
+            // Обнуляем значение в инфо таблице.
+            this.app.setUnitsCount(-1);
             // Возвращаемся на текущий уровень.
             this.app.setAppLevel(7);
         }
