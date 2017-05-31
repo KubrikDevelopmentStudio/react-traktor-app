@@ -100,7 +100,9 @@ class App {
     private workersCount: number;
 
     /** Результаты расчетов */
-
+    supremeCalculation() {
+        
+    }
 
     /** Сумма приведенных затрат */
     calculatioSum() {
