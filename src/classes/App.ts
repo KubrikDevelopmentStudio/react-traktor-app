@@ -43,7 +43,7 @@ class App {
                 if (this.level < 2) this.level = 2
                 break;
             case 'workType':
-                if (this.level < 3) this.level = 3 
+                if (this.level < 3) this.level = 3
                 break;
             case 'operationCaption':
                 if (this.level < 4) this.level = 4;
@@ -99,14 +99,50 @@ class App {
     /** Сколько рабочих (кроме тракториста) обслуживают агрегат. */
     private workersCount: number;
 
+    /** Расчет затрат на ТР и ТО машин */
+    calculationForTOMachines() {
+        // Считаем b(1+75)
+        const coeffSum75: number = this.selectedMachine.coefficientOfDeductions[1] + this.selectedMachine.coefficientOfDeductions[2];
+        // Считаем b(1+60)
+        const coeffSum60: number = this.selectedMachine.coefficientOfDeductions[0] + this.selectedMachine.coefficientOfDeductions[2];
+        // d(1+90)
+        return ((this.selectedMachine.coast * this.selectedMachine.coefficientOfDeductions[2]) / coeffSum75 / coeffSum60) * this.machineCount * this.unitsCount;
+    }
+
+    /** Расчет затрат на ТР и ТО тракторов */
+    calculationForTOTraktors() {
+        // Считаем b(1+60)
+        const coeffSum60: number = this.selectedMachine.coefficientOfDeductions[0] + this.selectedMachine.coefficientOfDeductions[2];
+        // d(1+75)
+        return ((this.selectedTraktor.totalCoast * this.selectedTraktor.coefficientOfDeductions[2]) / 1350 / coeffSum60) * this.unitsCount;
+    }
+
+    /** Расчет затрат на капремонт машин */
+    calculationForRepairMachine() {
+        // Считаем b(1+75)
+        const coeffSum75: number = this.selectedMachine.coefficientOfDeductions[1] + this.selectedMachine.coefficientOfDeductions[2];
+        // Считаем b(1+60)
+        const coeffSum60: number = this.selectedMachine.coefficientOfDeductions[0] + this.selectedMachine.coefficientOfDeductions[2];
+        // d(1+60)
+        return ((this.selectedMachine.coast * this.selectedMachine.coefficientOfDeductions[1]) / coeffSum75 / coeffSum60) * this.machineCount * this.unitsCount;
+    }
+
+    /** Расчет затрат на капремонт тракторов */
+    calculationForRepairTraktor() {
+        // Считаем b(1+60)
+        const coeffSum60: number = this.selectedMachine.coefficientOfDeductions[0] + this.selectedMachine.coefficientOfDeductions[2];
+        // d(1+45)
+        return ((this.selectedTraktor.totalCoast * this.selectedTraktor.coefficientOfDeductions[1]) / 1350 / coeffSum60) * this.unitsCount;
+    }
+
     /** Расчет реновации рабочих машин */
     calculationOfRenovationMachines() {
-         // Считаем b(1+75)
+        // Считаем b(1+75)
         const coeffSum75: number = this.selectedMachine.coefficientOfDeductions[1] + this.selectedMachine.coefficientOfDeductions[2];
-         // Считаем b(1+60)
+        // Считаем b(1+60)
         const coeffSum60: number = this.selectedMachine.coefficientOfDeductions[0] + this.selectedMachine.coefficientOfDeductions[2];
         // d(1+30)
-        return ((this.selectedMachine.coast *  this.selectedMachine.coefficientOfDeductions[0]) / coeffSum75 / coeffSum60) * this.machineCount * this.unitsCount
+        return ((this.selectedMachine.coast * this.selectedMachine.coefficientOfDeductions[0]) / coeffSum75 / coeffSum60) * this.machineCount * this.unitsCount
     }
 
     /** Расчет реновации тракторов */
@@ -131,7 +167,7 @@ class App {
         // Сортируем объекты по необъходимому типу операций.
         const tmp = _.filter(MachinesList, (machine: any) => _.includes(machine.operationType, this.workType))
         // Создаем массив необходимого вида, для отображения в объекте выбора.
-        return _.map(tmp, (machine: any, index: number) => ({key: machine.modelId, value: machine.modelId, text: machine.model}))
+        return _.map(tmp, (machine: any, index: number) => ({ key: machine.modelId, value: machine.modelId, text: machine.model }))
     }
 
 
