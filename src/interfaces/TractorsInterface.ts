@@ -81,7 +81,11 @@ interface ITraktor {
             // Супер ТО.
             sto?: number
         }
-    }
+    },
+    // Коэффициент отчислений.
+    coefficientOfDeductions: number[],
+    // Стоимость трактора.
+    totalCoast: number
 };
 
 export default ITraktor;

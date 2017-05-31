@@ -49,7 +49,13 @@ export const t130m: ITraktor = {
             to3: 1.99,
             sto: 1.99
         }
-    }
+    },
+    coefficientOfDeductions: [
+        0.1,
+        0.07,
+        0.083
+    ],
+    totalCoast: 6273
 };
 
 
@@ -89,7 +95,13 @@ export const t100m: ITraktor = {
             to3: 1.99,
             sto: 1.99
         }
-    }
+    },
+    coefficientOfDeductions: [
+        0.1,
+        0.07,
+        0.083
+    ],
+    totalCoast: 6542
 };
 
 
@@ -124,7 +136,13 @@ export const k700a: ITraktor = {
             to3: 0.74,
             sto: 0.74
         }
-    }
+    },
+    coefficientOfDeductions: [
+        0.1,
+        0.07,
+        0.083
+    ],
+    totalCoast: 11975
 };
 
 
@@ -158,7 +176,13 @@ export const k701: ITraktor = {
             to3: 0.74,
             sto: 0.74
         }
-    }
+    },
+    coefficientOfDeductions: [
+        0.1,
+        0.07,
+        0.083
+    ],
+    totalCoast: 15575
 };
 
 
@@ -200,7 +224,13 @@ export const t4a: ITraktor = {
             to3: 1.3,
             sto: 1.3
         }
-    }
+    },
+    coefficientOfDeductions: [
+        0.125,
+        0.065,
+        0.102
+    ],
+    totalCoast: 4220
 };
 
 
@@ -241,7 +271,13 @@ export const dt75m: ITraktor = {
             to3: 0.91,
             sto: 0.91
         }
-    }
+    },
+    coefficientOfDeductions: [
+        0.125,
+        0.065,
+        0.102
+    ],
+    totalCoast: 3710
 };
 
 
@@ -280,7 +316,13 @@ export const t150k: ITraktor = {
             to3: 1.99,
             sto: 1.99
         }
-    }
+    },
+    coefficientOfDeductions: [
+        0.1,
+        0.07,
+        0.083
+    ],
+    totalCoast: 7152
 };
 
 
@@ -320,7 +362,14 @@ export const t70s: ITraktor = {
             to3: 0.85,
             sto: 0.85
         }
-    }
+    },
+    coefficientOfDeductions: [
+        0.125,
+        0.05,
+        0.099
+    ],
+    totalCoast: 3642
+    
 };
 
 
@@ -360,7 +409,13 @@ export const mtz80: ITraktor = {
             to3: 0.58,
             sto: 0.58
         }
-    }
+    },
+    coefficientOfDeductions: [
+        0.1,
+        0.05,
+        0.099
+    ],
+    totalCoast: 3987
 };
 
 
@@ -400,7 +455,13 @@ export const mtz82: ITraktor = {
             to3: 0.58,
             sto: 0.58
         }
-    }
+    },
+    coefficientOfDeductions: [
+        0.1,
+        0.05,
+        0.099
+    ],
+    totalCoast: 4322
 };
 
 /** ЮМЗ-6Л */
@@ -439,7 +500,13 @@ export const umz6l: ITraktor = {
             to3: 0.58,
             sto: 0.58
         }
-    }
+    },
+    coefficientOfDeductions: [
+        0.1,
+        0.05,
+        0.099
+    ],
+    totalCoast: 3207
 };
 
 /** Т-40М */
@@ -478,7 +545,13 @@ export const t40m: ITraktor = {
             to3: 0.1,
             sto: 0.1
         }
-    }
+    },
+    coefficientOfDeductions: [
+        0.125,
+        0.05,
+        0.099
+    ],
+    totalCoast: 2909
 };
 
 
@@ -519,7 +592,13 @@ export const t40am: ITraktor = {
             to3: 0.1,
             sto: 0.1
         }
-    }
+    },
+    coefficientOfDeductions: [
+        0.125,
+        0.05,
+        0.099
+    ],
+    totalCoast: 2909
 };
 
 
@@ -560,7 +639,13 @@ export const t25a: ITraktor = {
             to3: 0.3,
             sto: 0.3
         }
-    }
+    },
+    coefficientOfDeductions: [
+        0.142,
+        0.027,
+        0.07
+    ],
+    totalCoast: 2008
 };
 
 
@@ -602,7 +687,13 @@ export const t25a1: ITraktor = {
             to3: 0.3,
             sto: 0.3
         }
-    }
+    },
+    coefficientOfDeductions: [
+        0.142,
+        0.027,
+        0.07
+    ],
+    totalCoast: 2008
 };
 
 
@@ -643,7 +734,13 @@ export const t16: ITraktor = {
             to3: 0.3,
             sto: 0.3
         }
-    }
+    },
+    coefficientOfDeductions: [
+        0.142,
+        0.027,
+        0.07
+    ],
+    totalCoast: 2104
 };
 
 

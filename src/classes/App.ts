@@ -99,6 +99,24 @@ class App {
     /** Сколько рабочих (кроме тракториста) обслуживают агрегат. */
     private workersCount: number;
 
+    /** Расчет реновации рабочих машин */
+    calculationOfRenovationMachines() {
+         // Считаем b(1+75)
+        const coeffSum75: number = this.selectedMachine.coefficientOfDeductions[1] + this.selectedMachine.coefficientOfDeductions[2];
+         // Считаем b(1+60)
+        const coeffSum60: number = this.selectedMachine.coefficientOfDeductions[0] + this.selectedMachine.coefficientOfDeductions[2];
+        // d(1+30)
+        return ((this.selectedMachine.coast *  this.selectedMachine.coefficientOfDeductions[0]) / coeffSum75 / coeffSum60) * this.machineCount * this.unitsCount
+    }
+
+    /** Расчет реновации тракторов */
+    calculationOfRenovationTraktors() {
+        // Считаем b(1+60)
+        const coeffSum: number = this.selectedMachine.coefficientOfDeductions[0] + this.selectedMachine.coefficientOfDeductions[2];
+        // Это d(1+15).
+        return ((this.selectedTraktor.totalCoast * this.selectedTraktor.coefficientOfDeductions[0]) / 1350 / coeffSum) * this.unitsCount;
+    }
+
     /** Считаем расчет оплаты труда */
     calculationOfWages() {
         // Считаем b(1+60)
@@ -107,6 +125,7 @@ class App {
         return this.unitsCount * this.workersCount * (0.58 / coeffSum) + this.unitsCount * (0.83 / coeffSum);
     }
 
+
     /** Получаем список машин, в зависимости от выбранной технологичской операции */
     getMachinesList() {
         // Сортируем объекты по необъходимому типу операций.
@@ -114,6 +133,7 @@ class App {
         // Создаем массив необходимого вида, для отображения в объекте выбора.
         return _.map(tmp, (machine: any, index: number) => ({key: machine.modelId, value: machine.modelId, text: machine.model}))
     }
+
 
     /** Геттер уровня приложения */
     getAppLevel() {
