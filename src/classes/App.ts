@@ -99,6 +99,36 @@ class App {
     /** Сколько рабочих (кроме тракториста) обслуживают агрегат. */
     private workersCount: number;
 
+    /** Результаты расчетов */
+
+
+    /** Сумма приведенных затрат */
+    calculatioSum() {
+        // p(1)
+        return this.calculationZatratiForOperation() + (0.1 * this.calculationCapvlojeniya());
+    }
+
+
+    /** Кап вложения */
+    calculationCapvlojeniya() {
+        // d(1+120)
+        return ((this.selectedMachine.coast * this.machineCount) + this.selectedTraktor.totalCoast) * this.unitsCount / this.fieldArea;
+    }
+
+    /** Эксплуатационные затраты для каждой операции */
+    calculationZatratiForOperation() {
+        // e(1)
+        return this.calculationOfWages() + 
+                this.calculationOfRenovationTraktors() + 
+                this.calculationOfRenovationMachines() + 
+                this.calculationForRepairTraktor() + 
+                this.calculationForRepairMachine() + 
+                this.calculationForTOTraktors() +
+                this.calculationForTOMachines() +
+                // Затраты на ТСМ ( у нас нету таких машинв списке, поэтому ноль).
+                0;
+    }
+
     /** Расчет затрат на ТР и ТО машин */
     calculationForTOMachines() {
         // Считаем b(1+75)
@@ -157,7 +187,7 @@ class App {
     calculationOfWages() {
         // Считаем b(1+60)
         const coeffSum: number = this.selectedMachine.coefficientOfDeductions[0] + this.selectedMachine.coefficientOfDeductions[2];
-        // Считаем оплату труда.
+        // Считаем оплату труда. d
         return this.unitsCount * this.workersCount * (0.58 / coeffSum) + this.unitsCount * (0.83 / coeffSum);
     }
 
