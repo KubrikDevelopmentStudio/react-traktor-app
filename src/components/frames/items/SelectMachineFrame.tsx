@@ -17,7 +17,9 @@ import {
     IAppTransfer,
 } from '../../../interfaces/AppInterfaces';
 /** Импорт количества возможных операций */
-
+import {
+    machinesLibrary
+} from '../../../constants/MachinesCharacteristics'
 
 
 /**
@@ -56,7 +58,7 @@ export default class SelectMachine extends React.Component<IAppTransfer, null> {
         // Установка нового значения.
         this.setState({ selectedMachine: value });
         // Установка значения в главном классе приложения.
-        this.app.setSelectMachine(value);
+        this.app.setSelectMachine(machinesLibrary[value]);
     }
 
 
@@ -74,7 +76,7 @@ export default class SelectMachine extends React.Component<IAppTransfer, null> {
         })
         // Проверка на уже введенные данные ранее.
         if ((this.state.componentShow === false && componentShow) && this.state.selectedMachine.length > 0) {
-            this.app.setSelectMachine(this.state.selectedMachine)
+            this.app.setSelectMachine(machinesLibrary[this.state.selectedMachine])
         }
     }
 

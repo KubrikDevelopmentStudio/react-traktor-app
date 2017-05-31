@@ -60,7 +60,7 @@ export default class OperationType extends React.Component<IAppTransfer, null> {
         this.app.setWorkType(parseInt(value));
 
         if (this.app.getAppLevel() > 5) {
-            this.app.setSelectMachine(_.stubString());
+            // this.app.setSelectMachine(;
             this.app.setAppLevel(5);
         }
     }

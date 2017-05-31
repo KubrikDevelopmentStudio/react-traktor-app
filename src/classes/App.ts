@@ -2,6 +2,10 @@
 import * as _ from 'lodash';
 /** Импортируем интерфейс трактора */
 import ITraktor from '../interfaces/TractorsInterface';
+/** импортируем интерфейс машин */
+import IMachine from '../interfaces/MachinesInterface';
+/** Импортируем список машин */
+import { MachinesList } from './../constants/MachinesCharacteristics';
 /** Тип выполняемых работ */
 import {
     MAX_OPERATION_COUNT,
@@ -10,9 +14,6 @@ import {
     OperationTypeList,
     CargoTypeList
 } from '../constants/constants';
-/** Импортируем список машин */
-import { MachinesList } from './../constants/MachinesCharacteristics';
-
 
 
 /**
@@ -88,7 +89,7 @@ class App {
     /** Выбранный трактор.*/
     private selectedTraktor: ITraktor;
     /** Рабочая машина для выполнения.*/
-    private selectedMachine: string;
+    private selectedMachine: IMachine;
     /** Груз для перевозки.*/
     private cargoType: CargoType;
     /** Количество агрегатов для выполнения данной технологической операции. */
@@ -98,12 +99,20 @@ class App {
     /** Сколько рабочих (кроме тракториста) обслуживают агрегат. */
     private workersCount: number;
 
+    /** Считаем расчет оплаты труда */
+    calculationOfWages() {
+        // Считаем b(1+60)
+        const coeffSum: number = this.selectedMachine.coefficientOfDeductions[0] + this.selectedMachine.coefficientOfDeductions[2];
+        // Считаем оплату труда.
+        return this.unitsCount * this.workersCount * (0.58 / coeffSum) + this.unitsCount * (0.83 / coeffSum);
+    }
+
     /** Получаем список машин, в зависимости от выбранной технологичской операции */
     getMachinesList() {
         // Сортируем объекты по необъходимому типу операций.
-        const tmp = _.filter(MachinesList, machine => _.includes(machine.operationType, this.workType))
+        const tmp = _.filter(MachinesList, (machine: any) => _.includes(machine.operationType, this.workType))
         // Создаем массив необходимого вида, для отображения в объекте выбора.
-        return _.map(tmp, (machine: any, index: number) => ({key: machine.modelId, value: machine.model, text: machine.model}))
+        return _.map(tmp, (machine: any, index: number) => ({key: machine.modelId, value: machine.modelId, text: machine.model}))
     }
 
     /** Геттер уровня приложения */
@@ -136,7 +145,7 @@ class App {
             },
             selectedMachine: {
                 caption: 'Выбранный автомобиль',
-                value: this.selectedMachine
+                value: this.selectedMachine ? this.selectedMachine.model : ""
             },
             cargoType: {
                 caption: 'Груз для перевозки',
@@ -213,7 +222,7 @@ class App {
 
 
     /** Сеттер выбора машины */
-    setSelectMachine(machine: string) {
+    setSelectMachine(machine: IMachine) {
         // Устанавливаем новое значение.
         this.selectedMachine = machine;
 
@@ -255,6 +264,18 @@ class App {
 
         this.callback(`workersCount`);
     };
+
+    getUnitsCount() {
+        return this.unitsCount;
+    }
+
+    getWorkersCount() {
+        return this.workersCount;
+    }
+
+    getSelectedMachine() {
+        return this.selectedMachine;
+    }
 }
 
 export default App;
