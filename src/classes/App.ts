@@ -109,47 +109,58 @@ class App {
         return {
             areaField: {
                 caption: "Площадь поля",
-                value: this.fieldArea
+                value: this.fieldArea,
+                unit: `Га`
             },
             traktors: {
                 caption: "Тракторов",
-                value: `${this.selectedTraktor.model}, ${this.unitsCount} шт.`
+                value: `${this.selectedTraktor.model}, ${this.unitsCount}`,
+                unit: `шт.`
             },
             machines: {
                 caption: "Машин",
-                value: `${this.selectedMachine.model}, ${this.unitsCount * this.machineCount} шт.`
+                value: `${this.selectedMachine.model}, ${this.unitsCount * this.machineCount}`,
+                unit: `шт.`
             },
             rennovation: {
                 caption: "Ренновация",
-                value: ((this.calculationOfRenovationTraktors() + this.calculationOfRenovationMachines()) * 100) / 100
+                value: (((this.calculationOfRenovationTraktors() + this.calculationOfRenovationMachines()) * 100) / 100).toFixed(3),
+                unit: `Руб./Га`
             },
             workPay: {
                 caption: "Оплата труда",
-                value: (this.calculationOfWages() * 100) / 100
+                value: ((this.calculationOfWages() * 100) / 100).toFixed(3),
+                unit: `Руб.`
             },
             kapRepair: {
                 caption: "Кап ремонт",
-                value: ((this.calculationForRepairTraktor() + this.calculationForRepairMachine()) * 100) / 100
+                value: (((this.calculationForRepairTraktor() + this.calculationForRepairMachine()) * 100) / 100).toFixed(3),
+                unit: `Руб.`
             },
             currentRepair: {
                 caption: "Текущий ремонт и ТО",
-                value: ((this.calculationForRepairTraktor() + this.calculationForRepairMachine()) * 100) / 100
+                value: (((this.calculationForRepairTraktor() + this.calculationForRepairMachine()) * 100) / 100).toFixed(3),
+                unit: "Руб."
             },
             tsm: {
                 caption: "ТСМ и электроэнергия",
-                value: this.calculationTSM() * 100 / 100
+                value: (this.calculationTSM() * 100 / 100).toFixed(3),
+                unit: "Руб."
             },
             allExpluatation: {
                 caption: "Экспл. затраты",
-                value: this.calculationZatratiForOperation() * 100 / 100
+                value: (this.calculationZatratiForOperation() * 100 / 100).toFixed(3),
+                unit: "Руб."
             },
             kapVlojenia: {
                 caption: "Кап вложения",
-                value: this.calculationCapvlojeniya() * 100 / 100
+                value: (this.calculationCapvlojeniya() * 100 / 100).toFixed(3),
+                unit: "Руб."
             },
             allSum: {
                 caption: "Сумма приведенных затрат",
-                value: this.calculatioSum() * 100 / 100
+                value: (this.calculatioSum() * 100 / 100).toFixed(3),
+                unit: "Руб."
             }
         }
     }
@@ -272,8 +283,10 @@ class App {
     }
 
     showResultTable() {
-
         this.callback('resultTable');
+    }
+    setShowResult(state: boolean) {
+        this.resultTable = false;
     }
     getShowResultTable() {
         return this.resultTable;

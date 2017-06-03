@@ -1,4 +1,5 @@
-import * as React from 'react'
+import * as _ from 'lodash';
+import * as React from 'react';
 import { Button, Header, Icon, Modal, Table } from 'semantic-ui-react'
 
 import App from '../../classes/App';
@@ -39,7 +40,22 @@ export default class ResultTable extends React.Component<IAppTransfer, null> {
     app: App;
 
     createRows(data: any) {
+        return _.map(data, (param: any) =>
+            <Table.Row>
+                <Table.Cell>{param.caption}</Table.Cell>
+                <Table.Cell>{param.value}</Table.Cell>
+                <Table.Cell>{param.unit}</Table.Cell>
+            </Table.Row>
+        );
+    }
 
+    handleClose = (e: any) => {
+        this.app.setShowResult(false);
+        this.setState({show: false});
+    }
+
+    handleReload = (e: any) => {
+        this.setState({show: false}, () => window.location.reload());
     }
 
     /**
@@ -59,6 +75,8 @@ export default class ResultTable extends React.Component<IAppTransfer, null> {
     render() {
         // Получаем необходимые свойтсва.
         const { show } = this.state;
+        if (!show) return null;
+
         const tableBody: any = this.createRows(this.app.getResults());
         return (
             <Modal open={show} basic size='small'>
@@ -69,11 +87,12 @@ export default class ResultTable extends React.Component<IAppTransfer, null> {
                             <Table.Row>
                                 <Table.HeaderCell>{`Параметры`}</Table.HeaderCell>
                                 <Table.HeaderCell>{`Результаты`}</Table.HeaderCell>
+                                <Table.HeaderCell>{`Единица измерения`}</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
 
                         <Table.Body>
-                            {tableBody}                 
+                            {tableBody}
                         </Table.Body>
 
                         <Table.Footer>
@@ -85,11 +104,11 @@ export default class ResultTable extends React.Component<IAppTransfer, null> {
                     </Table>
                 </Modal.Content>
                 <Modal.Actions>
-                    <Button basic color='red' inverted>
-                        <Icon name='remove' /> No
+                    <Button color='orange' inverted onClick={this.handleClose}>
+                        <Icon name='refresh' /> {`Изменить данные`}
                     </Button>
-                    <Button color='green' inverted>
-                        <Icon name='checkmark' /> Yes
+                    <Button color='red' inverted onClick={this.handleReload}>
+                        <Icon name='remove' /> {`Завершить работу`}
                     </Button>
                 </Modal.Actions>
             </Modal>
