@@ -55,6 +55,7 @@ export const t130m: ITraktor = {
         0.07,
         0.083
     ],
+    conversionRate: 1.65,
     totalCoast: 6273
 };
 
@@ -101,6 +102,7 @@ export const t100m: ITraktor = {
         0.07,
         0.083
     ],
+    conversionRate: 1.65,
     totalCoast: 6542
 };
 
@@ -142,6 +144,7 @@ export const k700a: ITraktor = {
         0.07,
         0.083
     ],
+    conversionRate: 2.2,
     totalCoast: 11975
 };
 
@@ -182,6 +185,7 @@ export const k701: ITraktor = {
         0.07,
         0.083
     ],
+    conversionRate: 2.7,
     totalCoast: 15575
 };
 
@@ -230,6 +234,7 @@ export const t4a: ITraktor = {
         0.065,
         0.102
     ],
+    conversionRate: 0.73,
     totalCoast: 4220
 };
 
@@ -277,6 +282,7 @@ export const dt75m: ITraktor = {
         0.065,
         0.102
     ],
+    conversionRate: 1.1,
     totalCoast: 3710
 };
 
@@ -322,6 +328,7 @@ export const t150k: ITraktor = {
         0.07,
         0.083
     ],
+    conversionRate: 1.65,
     totalCoast: 7152
 };
 
@@ -368,6 +375,7 @@ export const t70s: ITraktor = {
         0.05,
         0.099
     ],
+    conversionRate: 0.9,
     totalCoast: 3642
     
 };
@@ -415,6 +423,7 @@ export const mtz80: ITraktor = {
         0.05,
         0.099
     ],
+    conversionRate: 0.7,
     totalCoast: 3987
 };
 
@@ -461,6 +470,7 @@ export const mtz82: ITraktor = {
         0.05,
         0.099
     ],
+    conversionRate: 0.73,
     totalCoast: 4322
 };
 
@@ -506,6 +516,7 @@ export const umz6l: ITraktor = {
         0.05,
         0.099
     ],
+    conversionRate: 0.6,
     totalCoast: 3207
 };
 
@@ -551,6 +562,7 @@ export const t40m: ITraktor = {
         0.05,
         0.099
     ],
+    conversionRate: 0.6,
     totalCoast: 2909
 };
 
@@ -598,6 +610,7 @@ export const t40am: ITraktor = {
         0.05,
         0.099
     ],
+    conversionRate: 0.6,
     totalCoast: 2909
 };
 
@@ -645,6 +658,7 @@ export const t25a: ITraktor = {
         0.027,
         0.07
     ],
+    conversionRate: 0.3,
     totalCoast: 2008
 };
 
@@ -693,6 +707,7 @@ export const t25a1: ITraktor = {
         0.027,
         0.07
     ],
+    conversionRate: 0.3,
     totalCoast: 2008
 };
 
@@ -740,6 +755,7 @@ export const t16: ITraktor = {
         0.027,
         0.07
     ],
+    conversionRate: 0.22,
     totalCoast: 2104
 };
 

@@ -84,6 +84,8 @@ interface ITraktor {
     },
     // Коэффициент отчислений.
     coefficientOfDeductions: number[],
+    // Коэффициент перевода.
+    conversionRate: number,
     // Стоимость трактора.
     totalCoast: number
 };

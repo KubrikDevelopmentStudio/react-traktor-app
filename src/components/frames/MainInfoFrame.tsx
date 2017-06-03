@@ -85,6 +85,9 @@ export default class MainInfoFrame extends React.Component<IAppTransfer, null> {
         return nData;
     }
 
+    handleClick = (e: any) => {
+        this.app.showResultTable();
+    }
 
     /**
      * Получение новых пропов.
@@ -119,7 +122,7 @@ export default class MainInfoFrame extends React.Component<IAppTransfer, null> {
                 {`Заполнение необходимыми данными`}
             </Progress>;
         } else {
-            action = <Button fluid positive content='Подсчитать затраты' />;
+            action = <Button fluid positive content='Подсчитать затраты' onClick={this.handleClick}/>;
         }
         // Отрисовываем компонент.
         return (

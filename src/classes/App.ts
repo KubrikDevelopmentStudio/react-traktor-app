@@ -66,6 +66,9 @@ class App {
             case 'workersCount':
                 if (this.level < 10) this.level = 10;
                 break;
+            case 'resultTable':
+                this.resultTable = true;
+                break;
         }
         // Вызов внешней функции.
         this.wildCallback(param);
@@ -76,6 +79,8 @@ class App {
     private wildCallback: any;
     /** Текцщий уровень приложения */
     private level: number;
+
+    private resultTable: boolean;
 
 
     /** Количество технологических операций.*/
@@ -100,8 +105,53 @@ class App {
     private workersCount: number;
 
     /** Результаты расчетов */
-    supremeCalculation() {
-        
+    getResults() {
+        return {
+            areaField: {
+                caption: "Площадь поля",
+                value: this.fieldArea
+            },
+            traktors: {
+                caption: "Тракторов",
+                value: `${this.selectedTraktor.model}, ${this.unitsCount} шт.`
+            },
+            machines: {
+                caption: "Машин",
+                value: `${this.selectedMachine.model}, ${this.unitsCount * this.machineCount} шт.`
+            },
+            rennovation: {
+                caption: "Ренновация",
+                value: ((this.calculationOfRenovationTraktors() + this.calculationOfRenovationMachines()) * 100) / 100
+            },
+            workPay: {
+                caption: "Оплата труда",
+                value: (this.calculationOfWages() * 100) / 100
+            },
+            kapRepair: {
+                caption: "Кап ремонт",
+                value: ((this.calculationForRepairTraktor() + this.calculationForRepairMachine()) * 100) / 100
+            },
+            currentRepair: {
+                caption: "Текущий ремонт и ТО",
+                value: ((this.calculationForRepairTraktor() + this.calculationForRepairMachine()) * 100) / 100
+            },
+            tsm: {
+                caption: "ТСМ и электроэнергия",
+                value: this.calculationTSM() * 100 / 100
+            },
+            allExpluatation: {
+                caption: "Экспл. затраты",
+                value: this.calculationZatratiForOperation() * 100 / 100
+            },
+            kapVlojenia: {
+                caption: "Кап вложения",
+                value: this.calculationCapvlojeniya() * 100 / 100
+            },
+            allSum: {
+                caption: "Сумма приведенных затрат",
+                value: this.calculatioSum() * 100 / 100
+            }
+        }
     }
 
     /** Сумма приведенных затрат */
@@ -117,18 +167,37 @@ class App {
         return ((this.selectedMachine.coast * this.machineCount) + this.selectedTraktor.totalCoast) * this.unitsCount / this.fieldArea;
     }
 
+    
+
     /** Эксплуатационные затраты для каждой операции */
     calculationZatratiForOperation() {
         // e(1)
-        return this.calculationOfWages() + 
-                this.calculationOfRenovationTraktors() + 
-                this.calculationOfRenovationMachines() + 
-                this.calculationForRepairTraktor() + 
-                this.calculationForRepairMachine() + 
-                this.calculationForTOTraktors() +
-                this.calculationForTOMachines() +
-                // Затраты на ТСМ ( у нас нету таких машинв списке, поэтому ноль).
-                0;
+        return this.calculationOfWages() +
+            this.calculationOfRenovationTraktors() +
+            this.calculationOfRenovationMachines() +
+            this.calculationForRepairTraktor() +
+            this.calculationForRepairMachine() +
+            this.calculationForTOTraktors() +
+            this.calculationForTOMachines() +
+            this.calculationTSM();
+    }
+
+    calculationTSM() {
+        // d(1+105)
+        switch(this.selectedMachine.model) {
+            case "ГАЗ-САЗ-3502":
+                return (0.7*8*40*27*0.45) / this.fieldArea / 100;
+            case "ЗИЛ-ММЗ-554":
+                return (0.7*8*40*40*0.45) / this.fieldArea / 100;
+            case "КАМАЗ-55102":
+                return (0.7*8*40*35*0.085) / this.fieldArea / 100;
+            case "ЗСК-10":
+                return (0.7*8*30*44*0.45) / this.fieldArea / 100;
+            default:
+                // Считаем b(1+60)
+                const coeffSum60: number = this.selectedMachine.coefficientOfDeductions[0] + this.selectedMachine.coefficientOfDeductions[2];
+                return this.fieldArea / coeffSum60 * this.selectedTraktor.conversionRate * 8 * 0.085;
+        }
     }
 
     /** Расчет затрат на ТР и ТО машин */
@@ -189,7 +258,7 @@ class App {
     calculationOfWages() {
         // Считаем b(1+60)
         const coeffSum: number = this.selectedMachine.coefficientOfDeductions[0] + this.selectedMachine.coefficientOfDeductions[2];
-        // Считаем оплату труда. d
+        // Считаем оплату труда. d(1)
         return this.unitsCount * this.workersCount * (0.58 / coeffSum) + this.unitsCount * (0.83 / coeffSum);
     }
 
@@ -202,7 +271,13 @@ class App {
         return _.map(tmp, (machine: any, index: number) => ({ key: machine.modelId, value: machine.modelId, text: machine.model }))
     }
 
+    showResultTable() {
 
+        this.callback('resultTable');
+    }
+    getShowResultTable() {
+        return this.resultTable;
+    }
     /** Геттер уровня приложения */
     getAppLevel() {
         return this.level;

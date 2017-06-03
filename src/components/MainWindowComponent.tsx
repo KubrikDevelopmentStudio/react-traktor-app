@@ -9,6 +9,7 @@ import App from '../classes/App';
 import MainFrame from './frames/MainFrame';
 import HeaderFrame from './frames/items/HeaderFrame';
 import MainInfoFrame from './frames/MainInfoFrame';
+import ResultTable from './frames/ResultTable';
 
 /**
  * Главный объект приложения.
@@ -69,6 +70,13 @@ export default class MainWindow extends React.Component<{}, null> {
                         {/*Основной объект приложения*/}
                         <MainFrame app={this.app} />
                     </Grid.Column>
+                </Grid.Row>
+                {/*Создаем строку в сетке и выравниваем ее по центру*/}
+                <Grid.Row columns={4}>
+                    <Grid.Column width={5} verticalAlign='middle'>
+                        {/*Компонент с общей информацией*/}
+                        <ResultTable app={this.app} />
+                    </Grid.Column>        
                 </Grid.Row>
             </Grid>
         );
